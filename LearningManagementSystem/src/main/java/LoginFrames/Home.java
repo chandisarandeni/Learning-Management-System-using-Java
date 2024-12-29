@@ -4,6 +4,8 @@
  */
 package LoginFrames;
 
+import CommonClasses.ImageResizer;
+
 /**
  *
  * @author chand
@@ -15,6 +17,15 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        String imgSrc = "src\\main\\java\\LoginFrames\\Images\\HomeBanner.png";
+        lbl_HomeImage.setIcon(ImageResizer.resizeImage(imgSrc, 500, 500));
+
+        txt_studentUsername.setFocusable(true);
+        txt_studentPassword.setFocusable(true);
+
+        checkBox_showPassword.setFocusable(false);
+        btn_Login.setFocusable(false);
+        btn_Cancel.setFocusable(false);
     }
 
     /**
@@ -26,22 +37,251 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbl_HomeImage = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txt_studentUsername = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txt_studentPassword = new javax.swing.JPasswordField();
+        checkBox_showPassword = new javax.swing.JCheckBox();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        btn_Login = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        btn_Cancel = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(getIconImage());
+        setMaximumSize(new java.awt.Dimension(885, 525));
+        setMinimumSize(new java.awt.Dimension(885, 525));
+
+        lbl_HomeImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\LoginFrames\\Images\\HomeBanner.png")); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Cooper Black", 1, 36)); // NOI18N
+        jLabel1.setText("Welcome to");
+
+        jLabel2.setFont(new java.awt.Font("Cooper Black", 1, 24)); // NOI18N
+        jLabel2.setText("Riverstone Academy");
+
+        jLabel3.setFont(new java.awt.Font("Cooper Black", 1, 24)); // NOI18N
+        jLabel3.setText("________________________");
+
+        jLabel4.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel4.setText("\"Shaping the future, one student at a time.\"");
+
+        jLabel5.setFont(new java.awt.Font("Calisto MT", 0, 12)); // NOI18N
+        jLabel5.setText("We inspire minds, ignite passion, and empower");
+
+        jLabel6.setFont(new java.awt.Font("Calisto MT", 0, 12)); // NOI18N
+        jLabel6.setText("leaders to shape the future with confidence and");
+
+        jLabel7.setFont(new java.awt.Font("Calisto MT", 0, 12)); // NOI18N
+        jLabel7.setText("purpose.");
+
+        jLabel8.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
+        jLabel8.setText("Username");
+
+        jLabel9.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
+        jLabel9.setText(":");
+
+        txt_studentUsername.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        txt_studentUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_studentUsernameActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
+        jLabel10.setText("Password");
+
+        jLabel11.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
+        jLabel11.setText(":");
+
+        txt_studentPassword.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+
+        checkBox_showPassword.setFont(new java.awt.Font("Calisto MT", 0, 10)); // NOI18N
+        checkBox_showPassword.setText("Show");
+        checkBox_showPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBox_showPasswordActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Cooper Black", 1, 24)); // NOI18N
+        jLabel12.setText("________________________");
+
+        jLabel13.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel13.setText("Get Help?");
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btn_Login.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Login.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        btn_Login.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Login.setText("Login");
+        btn_Login.setAlignmentY(0.0F);
+        btn_Login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Login.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_LoginActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel14.setText("Forgot Password?");
+
+        jLabel15.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel15.setText("Click here");
+        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btn_Cancel.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Cancel.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        btn_Cancel.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Cancel.setText("Cancel");
+        btn_Cancel.setAlignmentY(0.0F);
+        btn_Cancel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Cancel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 885, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl_HomeImage, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel9))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel11)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel15))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txt_studentUsername, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btn_Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(27, 27, 27)
+                                                .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txt_studentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(checkBox_showPassword))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel13)))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 525, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_HomeImage, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(txt_studentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11)
+                            .addComponent(txt_studentPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkBox_showPassword))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(27, 27, 27))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_studentUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_studentUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_studentUsernameActionPerformed
+
+    private void checkBox_showPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBox_showPasswordActionPerformed
+        // TODO add your handling code here:
+        if (checkBox_showPassword.isSelected()) {
+            txt_studentPassword.setEchoChar((char) 0); // Show password
+        } else {
+            txt_studentPassword.setEchoChar('*'); // Hide password
+        }
+    }//GEN-LAST:event_checkBox_showPasswordActionPerformed
+
+    private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_LoginActionPerformed
+
+    private void btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelActionPerformed
+        // TODO add your handling code here:
+        txt_studentUsername.setText("");
+        txt_studentPassword.setText("");
+    }//GEN-LAST:event_btn_CancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +319,26 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Cancel;
+    private javax.swing.JButton btn_Login;
+    private javax.swing.JCheckBox checkBox_showPassword;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lbl_HomeImage;
+    private javax.swing.JPasswordField txt_studentPassword;
+    private javax.swing.JTextField txt_studentUsername;
     // End of variables declaration//GEN-END:variables
 }
