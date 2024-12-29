@@ -55,7 +55,7 @@ public class LecturerLogin extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        btn_ResetPassword = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btn_Cancel = new javax.swing.JButton();
@@ -133,10 +133,15 @@ public class LecturerLogin extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
         jLabel8.setText("Username");
 
-        jLabel15.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel15.setText("Click here");
-        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_ResetPassword.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        btn_ResetPassword.setForeground(new java.awt.Color(0, 0, 255));
+        btn_ResetPassword.setText("Click here");
+        btn_ResetPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_ResetPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_ResetPasswordMouseClicked(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
         jLabel9.setText(":");
@@ -186,7 +191,7 @@ public class LecturerLogin extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel14)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel15))
+                                        .addComponent(btn_ResetPassword))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(txt_lecturerUsername, javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +256,7 @@ public class LecturerLogin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_ResetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,6 +296,13 @@ public class LecturerLogin extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_btn_CancelActionPerformed
 
+    private void btn_ResetPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ResetPasswordMouseClicked
+        // TODO add your handling code here:
+        LecturerForgotPassword lecturerForgotPassword = new LecturerForgotPassword();
+        lecturerForgotPassword.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_btn_ResetPasswordMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -329,6 +341,7 @@ public class LecturerLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Cancel;
     private javax.swing.JButton btn_Login;
+    private javax.swing.JLabel btn_ResetPassword;
     private javax.swing.JCheckBox checkBox_showPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -336,7 +349,6 @@ public class LecturerLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

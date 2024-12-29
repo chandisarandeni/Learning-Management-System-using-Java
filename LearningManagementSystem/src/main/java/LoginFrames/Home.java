@@ -147,6 +147,11 @@ public class Home extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(0, 0, 255));
         jLabel15.setText("Click here");
         jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
 
         btn_Cancel.setBackground(new java.awt.Color(0, 0, 0));
         btn_Cancel.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
@@ -304,6 +309,13 @@ public class Home extends javax.swing.JFrame {
         txt_studentUsername.setText("");
         txt_studentPassword.setText("");
     }//GEN-LAST:event_btn_CancelActionPerformed
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        // TODO add your handling code here:
+        StudentForgotPassword studentForgotPassword = new StudentForgotPassword();
+        studentForgotPassword.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_jLabel15MouseClicked
 
     /**
      * @param args the command line arguments
