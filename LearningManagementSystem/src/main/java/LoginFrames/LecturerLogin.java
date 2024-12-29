@@ -10,20 +10,19 @@ import CommonClasses.ImageResizer;
  *
  * @author chand
  */
-public class AdminLogin extends javax.swing.JFrame {
+public class LecturerLogin extends javax.swing.JFrame {
 
     /**
-     * Creates new form AdminLogin
+     * Creates new form LecturerLogin
      */
-    public AdminLogin() {
+    public LecturerLogin() {
         initComponents();
         
-        String AdminBanner = "src\\main\\java\\LoginFrames\\Images\\AdminBanner.png";
-        lbl_lecturerLoginImage.setIcon(ImageResizer.resizeImage(AdminBanner, 500, 500));
+        String LecturerLoginBanner = "src\\main\\java\\LoginFrames\\Images\\LecturerLoginBanner.png";
+        lbl_lecturerLoginImage.setIcon(ImageResizer.resizeImage(LecturerLoginBanner, 500, 500));
         
-        
-        txt_adminUsername.setFocusable(true);
-        txt_adminPassword.setFocusable(true);
+        txt_lecturerUsername.setFocusable(true);
+        txt_lecturerPassword.setFocusable(true);
         
         checkBox_showPassword.setFocusable(false);
         btn_Login.setFocusable(false);
@@ -39,6 +38,18 @@ public class AdminLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txt_lecturerUsername = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        lbl_lecturerLoginImage = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txt_lecturerPassword = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        checkBox_showPassword = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         btn_Login = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -46,23 +57,56 @@ public class AdminLogin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        btn_Cancel = new javax.swing.JButton();
-        txt_adminUsername = new javax.swing.JTextField();
-        lbl_lecturerLoginImage = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txt_adminPassword = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
-        checkBox_showPassword = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
+        btn_Cancel = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txt_lecturerUsername.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        txt_lecturerUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_lecturerUsernameActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Calisto MT", 0, 12)); // NOI18N
+        jLabel5.setText("We inspire minds, ignite passion, and empower");
+
+        lbl_lecturerLoginImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\LoginFrames\\Images\\LecturerLoginBanner.png")); // NOI18N
+
+        jLabel13.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel13.setText("Get Help?");
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel10.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
+        jLabel10.setText("Password");
+
+        jLabel16.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
+        jLabel16.setText("Lecturer Login");
+
+        jLabel1.setFont(new java.awt.Font("Cooper Black", 1, 36)); // NOI18N
+        jLabel1.setText("Welcome to");
+
+        jLabel11.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
+        jLabel11.setText(":");
+
+        jLabel2.setFont(new java.awt.Font("Cooper Black", 1, 24)); // NOI18N
+        jLabel2.setText("Riverstone Academy");
+
+        txt_lecturerPassword.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Cooper Black", 1, 24)); // NOI18N
+        jLabel3.setText("________________________");
+
+        checkBox_showPassword.setFont(new java.awt.Font("Calisto MT", 0, 10)); // NOI18N
+        checkBox_showPassword.setText("Show");
+        checkBox_showPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBox_showPasswordActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Calisto MT", 0, 12)); // NOI18N
         jLabel6.setText("leaders to shape the future with confidence and");
@@ -97,6 +141,9 @@ public class AdminLogin extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
         jLabel9.setText(":");
 
+        jLabel4.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel4.setText("\"Shaping the future, one student at a time.\"");
+
         btn_Cancel.setBackground(new java.awt.Color(0, 0, 0));
         btn_Cancel.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
         btn_Cancel.setForeground(new java.awt.Color(255, 255, 255));
@@ -110,56 +157,8 @@ public class AdminLogin extends javax.swing.JFrame {
             }
         });
 
-        txt_adminUsername.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        txt_adminUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_adminUsernameActionPerformed(evt);
-            }
-        });
-
-        lbl_lecturerLoginImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\LoginFrames\\Images\\AdminBanner.png")); // NOI18N
-
-        jLabel10.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
-        jLabel10.setText("Password");
-
-        jLabel1.setFont(new java.awt.Font("Cooper Black", 1, 36)); // NOI18N
-        jLabel1.setText("Welcome to");
-
-        jLabel11.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
-        jLabel11.setText(":");
-
-        jLabel2.setFont(new java.awt.Font("Cooper Black", 1, 24)); // NOI18N
-        jLabel2.setText("Riverstone Academy");
-
-        txt_adminPassword.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Cooper Black", 1, 24)); // NOI18N
-        jLabel3.setText("________________________");
-
-        checkBox_showPassword.setFont(new java.awt.Font("Calisto MT", 0, 10)); // NOI18N
-        checkBox_showPassword.setText("Show");
-        checkBox_showPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkBox_showPasswordActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel4.setText("\"Shaping the future, one student at a time.\"");
-
         jLabel12.setFont(new java.awt.Font("Cooper Black", 1, 24)); // NOI18N
         jLabel12.setText("________________________");
-
-        jLabel5.setFont(new java.awt.Font("Calisto MT", 0, 12)); // NOI18N
-        jLabel5.setText("We inspire minds, ignite passion, and empower");
-
-        jLabel13.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel13.setText("Get Help?");
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel16.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
-        jLabel16.setText("Admin Login");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,12 +189,12 @@ public class AdminLogin extends javax.swing.JFrame {
                                         .addComponent(jLabel15))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txt_adminUsername, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_lecturerUsername, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(btn_Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGap(27, 27, 27)
                                                 .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txt_adminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txt_lecturerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(checkBox_showPassword))))
                             .addGroup(layout.createSequentialGroup()
@@ -242,12 +241,12 @@ public class AdminLogin extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
-                            .addComponent(txt_adminUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_lecturerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(jLabel11)
-                            .addComponent(txt_adminPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_lecturerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkBox_showPassword))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -268,6 +267,19 @@ public class AdminLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txt_lecturerUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lecturerUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_lecturerUsernameActionPerformed
+
+    private void checkBox_showPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBox_showPasswordActionPerformed
+        // TODO add your handling code here:
+        if (checkBox_showPassword.isSelected()) {
+            txt_lecturerPassword.setEchoChar((char) 0); // Show password
+        } else {
+            txt_lecturerPassword.setEchoChar('*'); // Hide password
+        }
+    }//GEN-LAST:event_checkBox_showPasswordActionPerformed
+
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_LoginActionPerformed
@@ -278,19 +290,6 @@ public class AdminLogin extends javax.swing.JFrame {
         home.setVisible(true);
         this.hide();
     }//GEN-LAST:event_btn_CancelActionPerformed
-
-    private void txt_adminUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_adminUsernameActionPerformed
-
-    private void checkBox_showPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBox_showPasswordActionPerformed
-        // TODO add your handling code here:
-        if (checkBox_showPassword.isSelected()) {
-            txt_adminPassword.setEchoChar((char) 0); // Show password
-        } else {
-            txt_adminPassword.setEchoChar('*'); // Hide password
-        }
-    }//GEN-LAST:event_checkBox_showPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,23 +308,20 @@ public class AdminLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LecturerLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LecturerLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LecturerLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LecturerLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminLogin().setVisible(true);
+                new LecturerLogin().setVisible(true);
             }
         });
     }
@@ -351,7 +347,7 @@ public class AdminLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lbl_lecturerLoginImage;
-    private javax.swing.JPasswordField txt_adminPassword;
-    private javax.swing.JTextField txt_adminUsername;
+    private javax.swing.JPasswordField txt_lecturerPassword;
+    private javax.swing.JTextField txt_lecturerUsername;
     // End of variables declaration//GEN-END:variables
 }

@@ -292,8 +292,9 @@ public class Home extends javax.swing.JFrame {
             adminLogin.setVisible(true);
             this.hide();
         } else if (Username.equals("./lec")) {
-            Home home = new Home();
-            home.setVisible(true);
+            LecturerLogin lecturerLogin = new LecturerLogin();
+            lecturerLogin.setVisible(true);
+            this.hide();
         }
 
     }//GEN-LAST:event_btn_LoginActionPerformed
