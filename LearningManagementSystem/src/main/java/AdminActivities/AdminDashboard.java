@@ -6,6 +6,18 @@ package AdminActivities;
 
 import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
+import CommonClasses.ImageResizer;
+import LoginFrames.Home;
+import StudentActivities.StudentDashboard;
+import StudentActivities.StudentViewCourseContent;
+import StudentActivities.StudentViewTimetable;
+import java.awt.Color;
+import java.awt.Font;
+import javaswingdev.drawer.Drawer;
+import javaswingdev.drawer.DrawerController;
+import javaswingdev.drawer.DrawerItem;
+import javax.swing.ImageIcon;
+import javax.swing.Timer;
 
 /**
  *
@@ -16,8 +28,98 @@ public class AdminDashboard extends javax.swing.JFrame {
     /**
      * Creates new form AdminDashboard
      */
+    private final DrawerController drawer;
+    
     public AdminDashboard() {
         initComponents();
+        
+        String MenuColored = "src\\main\\java\\StudentActivities\\Icons\\MenuColored.png";
+        btn_Menu.setIcon(ImageResizer.resizeImage(MenuColored, 35, 35));
+
+        drawer = Drawer.newDrawer(this)
+                .headerHeight(100)
+                .space(100)
+                .background(new Color(55, 92, 92)) // RGB values for #375C5C
+                .backgroundTransparent(0.15f)
+                .drawerBackground(new Color(55, 92, 92))
+                .addChild(createDrawerItem("Dashboard"))
+                .addChild(createDrawerItem("Student"))
+                .addChild(createDrawerItem("Lecturer"))
+                .addChild(createDrawerItem("Time Table"))
+                .addChild(createDrawerItem("Course Content"))
+                .addChild(createDrawerItem("Examination"))
+                .addChild(createDrawerItem("Message"))
+                .addChild(createDrawerItem("Settings"))
+                .space(100)
+                .addChild(createDrawerItem("Logout"))
+                .build();
+    }
+    
+    
+    private DrawerItem createDrawerItem(String title) {
+        DrawerItem item = new DrawerItem(title)
+                .build();
+
+        // Add an action listener to handle item selection
+        item.addActionListener(e -> handleDrawerItemSelection(title));
+
+        return item;
+    }
+
+    private void handleDrawerItemSelection(String title) {
+        switch (title) {
+            case "Dashboard":
+                StudentDashboard studentDashboard = new StudentDashboard();
+                studentDashboard.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
+                break;
+            case "Time Table":
+                StudentViewTimetable studentViewTimetable = new StudentViewTimetable();
+                studentViewTimetable.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                break;
+            case "Course Content":
+                StudentViewCourseContent studentViewCourseContent = new StudentViewCourseContent();
+                studentViewCourseContent.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                break;
+            case "Examination":
+                // Show the Examination screen
+//                AdminViewExamination adminViewExamination = new AdminViewExamination();
+//                adminViewExamination.setVisible(true);
+//                this.setVisible(false);
+                break;
+            case "Logout":
+//                Home home = new Home();
+//                home.setVisible(true);
+//                this.setVisible(false);
+                break;
+            default:
+                // Handle unknown cases
+                break;
+        }
     }
 
     /**
@@ -29,21 +131,80 @@ public class AdminDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_Menu = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lbl_studentID = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btn_Menu.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\StudentActivities\\Icons\\MenuColored.png")); // NOI18N
+        btn_Menu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_MenuMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
+        jLabel2.setText("_________________________________________________________");
+
+        lbl_studentID.setText("AdminID");
+
+        jLabel4.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
+        jLabel4.setText("Admin Dashboard");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(lbl_studentID)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(77, 77, 77))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(277, 277, 277)
+                        .addComponent(jLabel4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_studentID))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)))
+                .addContainerGap(441, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MenuMouseClicked
+        // TODO add your handling code here:
+        if (drawer.isShow()) {
+            drawer.hide();
+        } else {
+            drawer.show();
+        }
+    }//GEN-LAST:event_btn_MenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -81,5 +242,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btn_Menu;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lbl_studentID;
     // End of variables declaration//GEN-END:variables
 }

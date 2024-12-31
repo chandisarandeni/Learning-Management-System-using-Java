@@ -4,6 +4,7 @@
  */
 package LoginFrames;
 
+import AdminActivities.AdminDashboard;
 import CommonClasses.ImageResizer;
 
 /**
@@ -275,6 +276,9 @@ public class AdminLogin extends javax.swing.JFrame {
 
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
         // TODO add your handling code here:
+        AdminDashboard adminDashboard = new AdminDashboard();
+        adminDashboard.setVisible(true);
+        this.hide();
     }//GEN-LAST:event_btn_LoginActionPerformed
 
     private void btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelActionPerformed
