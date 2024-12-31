@@ -5,6 +5,7 @@
 package LoginFrames;
 
 import CommonClasses.ImageResizer;
+import StudentActivities.StudentDashboard;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -300,6 +301,10 @@ public class Home extends javax.swing.JFrame {
             LecturerLogin lecturerLogin = new LecturerLogin();
             lecturerLogin.setVisible(true);
             this.hide();
+        }else{
+            StudentDashboard studentDashboard = new StudentDashboard();
+            studentDashboard.setVisible(true);
+            this.setVisible(false);
         }
 
     }//GEN-LAST:event_btn_LoginActionPerformed
