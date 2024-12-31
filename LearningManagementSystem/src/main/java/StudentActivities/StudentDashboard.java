@@ -27,7 +27,7 @@ public class StudentDashboard extends javax.swing.JFrame {
 
     public StudentDashboard() {
         initComponents();
-        
+
         String MenuColored = "src\\main\\java\\StudentActivities\\Icons\\MenuColored.png";
         btn_Menu.setIcon(ImageResizer.resizeImage(MenuColored, 35, 35));
 
@@ -37,17 +37,14 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .background(new Color(55, 92, 92)) // RGB values for #375C5C
                 .backgroundTransparent(0.15f)
                 .drawerBackground(new Color(55, 92, 92))
-                
                 .addChild(createDrawerItem("Dashboard"))
                 .addChild(createDrawerItem("Time Table"))
                 .addChild(createDrawerItem("Course Content"))
                 .addChild(createDrawerItem("Examination"))
                 .addChild(createDrawerItem("Message"))
                 .addChild(createDrawerItem("Settings"))
-                
                 .space(100)
                 .addChild(createDrawerItem("Logout"))
-                
                 .build();
     }
 
@@ -64,37 +61,41 @@ public class StudentDashboard extends javax.swing.JFrame {
     private void handleDrawerItemSelection(String title) {
         switch (title) {
             case "Dashboard":
-
+                StudentDashboard studentDashboard = new StudentDashboard();
+                studentDashboard.setVisible(true);
+                this.hide();
                 if (drawer.isShow()) {
                     Timer timer = new Timer(300, e -> drawer.hide());
                     drawer.hide();
-                    
-                    Home home = new Home();
-                    home.setVisible(true);
-                    this.hide();
                 } else {
                     Timer timer = new Timer(300, e -> drawer.hide());
                     drawer.show();
                 }
                 // Already on the Dashboard, do nothing or handle accordingly
                 break;
-            case "Students":
+            case "Time Table":
+                StudentViewTimetable studentViewTimetable = new StudentViewTimetable();
+                studentViewTimetable.setVisible(true);
+                this.hide();
                 if (drawer.isShow()) {
                     Timer timer = new Timer(300, e -> drawer.hide());
                     drawer.hide();
-//                    AdminViewStudent adminViewStudent = new AdminViewStudent();
-//                    adminViewStudent.setVisible(rootPaneCheckingEnabled);
-//                    this.setVisible(false);
                 } else {
                     Timer timer = new Timer(300, e -> drawer.hide());
                     drawer.show();
                 }
                 break;
-            case "Lecturer":
-                // Show the Lecturer screen
-//                AdminViewLecturer adminViewLecturer = new AdminViewLecturer();
-//                adminViewLecturer.setVisible(true);
-//                this.setVisible(false);
+            case "Course Content":
+                StudentViewCourseContent studentViewCourseContent = new StudentViewCourseContent();
+                studentViewCourseContent.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
                 break;
             case "Examination":
                 // Show the Examination screen
@@ -346,7 +347,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         jLabel4.setText("Student Dashboard");
 
         jLabel1.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel1.setText("Student Dashboard");
+        jLabel1.setText("Today Lecture");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -360,23 +361,24 @@ public class StudentDashboard extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(lbl_studentID)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jLabel2))
-                .addGap(77, 77, 77))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(345, Short.MAX_VALUE)
-                    .addComponent(jLabel4)
-                    .addGap(338, 338, 338)))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jLabel2))
+                        .addGap(77, 77, 77))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(277, 277, 277)
+                        .addComponent(jLabel4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,7 +390,9 @@ public class StudentDashboard extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lbl_studentID))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -398,11 +402,6 @@ public class StudentDashboard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(37, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(30, 30, 30)
-                    .addComponent(jLabel4)
-                    .addContainerGap(466, Short.MAX_VALUE)))
         );
 
         pack();
