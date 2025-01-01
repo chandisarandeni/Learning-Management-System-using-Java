@@ -8,6 +8,12 @@ import CommonClasses.ImageResizer;
 import StudentActivities.StudentDashboard;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -296,16 +302,70 @@ public class Home extends javax.swing.JFrame {
         if (Username.equals("./admin")) {
             AdminLogin adminLogin = new AdminLogin();
             adminLogin.setVisible(true);
-            this.hide();
+            this.setVisible(false);
         } else if (Username.equals("./lec")) {
             LecturerLogin lecturerLogin = new LecturerLogin();
             lecturerLogin.setVisible(true);
-            this.hide();
-        }else{
-            StudentDashboard studentDashboard = new StudentDashboard();
-            studentDashboard.setVisible(true);
             this.setVisible(false);
+        } else {
+            // Database connection details
+            String connectionString = "jdbc:mysql://localhost:3306/LMS"; // Update with your DB details
+            String dbUsername = "root";
+            String dbPassword = "";
+
+            Connection conn = null;
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+
+            try {
+                // Get user input
+                String studentEmail = txt_studentUsername.getText();
+                String studentPassword = new String(txt_studentPassword.getPassword());
+
+                // Connect to the database
+                conn = DriverManager.getConnection(connectionString, dbUsername, dbPassword);
+
+                // SQL query to validate login
+                String sql = "SELECT studentUsername, studentPassword FROM Student WHERE studentUsername = ? AND studentPassword = ?";
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, studentEmail);  // Corrected from 'txt_studentUsername' to 'studentEmail'
+                stmt.setString(2, studentPassword);
+
+                // Execute query
+                rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    // Login successful
+                    JOptionPane.showMessageDialog(this, "Login Successful!");
+                    StudentDashboard studentDashboard = new StudentDashboard();
+                    studentDashboard.setVisible(true);
+                    this.setVisible(false);
+                } else {
+                    // Invalid login
+                    JOptionPane.showMessageDialog(this, "Invalid email or password");
+                    txt_studentUsername.setText("");
+                    txt_studentPassword.setText("");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage());
+            } finally {
+                // Close resources
+                try {
+                    if (rs != null) {
+                        rs.close();
+                    }
+                    if (stmt != null) {
+                        stmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error Closing Resources: " + ex.getMessage());
+                }
+            }
         }
+
 
     }//GEN-LAST:event_btn_LoginActionPerformed
 

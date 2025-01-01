@@ -6,6 +6,14 @@ package LoginFrames;
 
 import AdminActivities.AdminDashboard;
 import CommonClasses.ImageResizer;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,14 +26,13 @@ public class AdminLogin extends javax.swing.JFrame {
      */
     public AdminLogin() {
         initComponents();
-        
+
         String AdminBanner = "src\\main\\java\\LoginFrames\\Images\\AdminBanner.png";
         lbl_lecturerLoginImage.setIcon(ImageResizer.resizeImage(AdminBanner, 500, 500));
-        
-        
+
         txt_adminUsername.setFocusable(true);
         txt_adminPassword.setFocusable(true);
-        
+
         checkBox_showPassword.setFocusable(false);
         btn_Login.setFocusable(false);
         btn_Cancel.setFocusable(false);
@@ -276,9 +283,65 @@ public class AdminLogin extends javax.swing.JFrame {
 
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
         // TODO add your handling code here:
-        AdminDashboard adminDashboard = new AdminDashboard();
-        adminDashboard.setVisible(true);
-        this.hide();
+        String adminUsername = txt_adminUsername.getText();
+        String adminPassword = txt_adminPassword.getText();
+
+        String connectionString = "jdbc:mysql://localhost:3306/LMS";
+        String Username = "root";
+        String Password = "";
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            // Establish connection to the database
+            conn = DriverManager.getConnection(connectionString, Username, Password);
+
+            // SQL statement
+            String sql = "SELECT adminUsername, adminPassword FROM admin WHERE adminUsername = ? AND adminPassword = ?";
+            stmt = conn.prepareStatement(sql);
+
+            // Set parameters
+            stmt.setString(1, adminUsername);
+            stmt.setString(2, adminPassword);
+
+            // Execute query
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Admin login successful
+                AdminDashboard adminDashboard = new AdminDashboard();
+                adminDashboard.setVisible(true);
+                this.setVisible(false);  // Hide login form
+            } else {
+                // Invalid username or password
+                JOptionPane.showMessageDialog(this, "Invalid username or password");
+
+                // Clear the input fields
+                txt_adminUsername.setText("");
+                txt_adminPassword.setText("");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminLogin.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        } finally {
+            // Ensure resources are closed
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }//GEN-LAST:event_btn_LoginActionPerformed
 
     private void btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelActionPerformed
