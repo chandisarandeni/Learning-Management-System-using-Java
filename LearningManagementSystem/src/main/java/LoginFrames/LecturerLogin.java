@@ -312,6 +312,9 @@ public class LecturerLogin extends javax.swing.JFrame {
 
     private void btn_ResetPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ResetPasswordMouseClicked
         // TODO add your handling code here:
+        LecturerForgotPassword lecturerForgotPassword = new LecturerForgotPassword();
+        lecturerForgotPassword.setVisible(true);
+        this.hide();
     }//GEN-LAST:event_btn_ResetPasswordMouseClicked
 
     private void btn_LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_LoginMouseClicked

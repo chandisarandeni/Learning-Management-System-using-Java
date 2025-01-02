@@ -7,6 +7,12 @@ package LoginFrames;
 import CommonClasses.ImageResizer;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,10 +25,10 @@ public class StudentForgotPassword extends javax.swing.JFrame {
      */
     public StudentForgotPassword() {
         initComponents();
-        
+
         String StudentForgotPassword = "src\\main\\java\\LoginFrames\\Images\\StudentForgotPassword.png";
         lbl_studentForgotPassword.setIcon(ImageResizer.resizeImage(StudentForgotPassword, 500, 500));
-        
+
         pnl_resetPassword.setVisible(false);
     }
 
@@ -173,6 +179,11 @@ public class StudentForgotPassword extends javax.swing.JFrame {
         btn_Reset.setAlignmentY(0.0F);
         btn_Reset.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_Reset.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Reset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_ResetMouseClicked(evt);
+            }
+        });
         btn_Reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ResetActionPerformed(evt);
@@ -379,21 +390,61 @@ public class StudentForgotPassword extends javax.swing.JFrame {
 
     private void btn_VerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerifyActionPerformed
         // TODO add your handling code here:
+        // Verify button action
+        String studentUsername = txt_studentUsername.getText();
+        String studentNIC = txt_studentNIC.getText();
+
+        String connectionString = "jdbc:mysql://localhost:3306/LMS";
+        String dbUsername = "root";
+        String dbPassword = "";
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DriverManager.getConnection(connectionString, dbUsername, dbPassword);
+
+            // SQL query to verify studentUsername and studentNIC
+            String sql = "SELECT studentUsername FROM Student WHERE studentUsername = ? AND studentNIC = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, studentUsername);
+            stmt.setString(2, studentNIC);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Verification Successful! You can now reset your password.");
+                txt_newPassword.setEnabled(true);
+                txt_confirmPassword.setEnabled(true);
+                btn_Reset.setEnabled(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid Username or NIC. Please try again.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error Closing Resources: " + ex.getMessage());
+            }
+        }
+
         pnl_resetPassword.setVisible(true);
     }//GEN-LAST:event_btn_VerifyActionPerformed
 
     private void btn_ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ResetActionPerformed
         // TODO add your handling code here:
-        String Username = txt_studentUsername.getText();
-        if (Username.equals("./admin")) {
-            AdminLogin adminLogin = new AdminLogin();
-            adminLogin.setVisible(true);
-            this.hide();
-        } else if (Username.equals("./lec")) {
-            LecturerLogin lecturerLogin = new LecturerLogin();
-            lecturerLogin.setVisible(true);
-            this.hide();
-        }
+
     }//GEN-LAST:event_btn_ResetActionPerformed
 
     private void checkBox_showNewPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBox_showNewPasswordActionPerformed
@@ -427,6 +478,58 @@ public class StudentForgotPassword extends javax.swing.JFrame {
         home.setVisible(true);
         this.hide();
     }//GEN-LAST:event_btn_BackActionPerformed
+
+    private void btn_ResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ResetMouseClicked
+        // TODO add your handling code here:
+        // Reset button action
+        String newPassword = new String(txt_newPassword.getPassword());
+        String confirmPassword = new String(txt_confirmPassword.getPassword());
+        String studentUsername = txt_studentUsername.getText();
+
+        if (!newPassword.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(this, "Passwords do not match. Please try again.");
+            return;
+        }
+
+        String connectionString = "jdbc:mysql://localhost:3306/LMS";
+        String dbUsername = "root";
+        String dbPassword = "";
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        try {
+            conn = DriverManager.getConnection(connectionString, dbUsername, dbPassword);
+
+            // SQL query to update the password
+            String sql = "UPDATE Student SET studentPassword = ? WHERE studentUsername = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, newPassword);
+            stmt.setString(2, studentUsername);
+
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(this, "Password Reset Successful!");
+                this.setVisible(false); // Close the reset password form
+            } else {
+                JOptionPane.showMessageDialog(this, "Error resetting password. Please try again.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error Closing Resources: " + ex.getMessage());
+            }
+        }
+
+    }//GEN-LAST:event_btn_ResetMouseClicked
 
     /**
      * @param args the command line arguments

@@ -7,6 +7,12 @@ package LoginFrames;
 import CommonClasses.ImageResizer;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,10 +25,10 @@ public class AdminForgotPassword extends javax.swing.JFrame {
      */
     public AdminForgotPassword() {
         initComponents();
-        
+
         String AdminForgotPassword = "src\\main\\java\\LoginFrames\\Images\\AdminForgotPassword.png";
         lbl_adminForgotPassword.setIcon(ImageResizer.resizeImage(AdminForgotPassword, 500, 500));
-        
+
         pnl_resetPassword.setVisible(false);
     }
 
@@ -55,7 +61,7 @@ public class AdminForgotPassword extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txt_studentUsername = new javax.swing.JTextField();
+        txt_adminUsername = new javax.swing.JTextField();
         btn_Back = new javax.swing.JButton();
         lbl_adminForgotPassword = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -63,7 +69,7 @@ public class AdminForgotPassword extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txt_studentUsername1 = new javax.swing.JTextField();
+        txt_adminNIC = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -231,10 +237,10 @@ public class AdminForgotPassword extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
         jLabel9.setText(":");
 
-        txt_studentUsername.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        txt_studentUsername.addActionListener(new java.awt.event.ActionListener() {
+        txt_adminUsername.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        txt_adminUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_studentUsernameActionPerformed(evt);
+                txt_adminUsernameActionPerformed(evt);
             }
         });
 
@@ -268,10 +274,10 @@ public class AdminForgotPassword extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
         jLabel4.setText("\"Shaping the future, one student at a time.\"");
 
-        txt_studentUsername1.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        txt_studentUsername1.addActionListener(new java.awt.event.ActionListener() {
+        txt_adminNIC.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        txt_adminNIC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_studentUsername1ActionPerformed(evt);
+                txt_adminNICActionPerformed(evt);
             }
         });
 
@@ -304,7 +310,7 @@ public class AdminForgotPassword extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_studentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_adminUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnl_resetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel17)
@@ -313,7 +319,7 @@ public class AdminForgotPassword extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_Verify, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_studentUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_adminNIC, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -344,12 +350,12 @@ public class AdminForgotPassword extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
-                            .addComponent(txt_studentUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_adminUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
                             .addComponent(jLabel16)
-                            .addComponent(txt_studentUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_adminNIC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_Verify, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -363,6 +369,55 @@ public class AdminForgotPassword extends javax.swing.JFrame {
 
     private void btn_VerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerifyActionPerformed
         // TODO add your handling code here:
+        // Verify button action
+        String adminUsername = txt_adminUsername.getText();
+        String adminNIC = txt_adminNIC.getText();
+
+        String connectionString = "jdbc:mysql://localhost:3306/LMS";
+        String Username = "root";
+        String Password = "";
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DriverManager.getConnection(connectionString, Username, Password);
+
+            // SQL query to verify adminUsername and adminNIC
+            String sql = "SELECT adminUsername FROM admin WHERE adminUsername = ? AND adminNIC = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, adminUsername);
+            stmt.setString(2, adminNIC);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Verification Successful! You can now reset your password.");
+                txt_newPassword.setEnabled(true);
+                txt_confirmPassword.setEnabled(true);
+                btn_Reset.setEnabled(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid Username or NIC. Please try again.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error Closing Resources: " + ex.getMessage());
+            }
+        }
+
         pnl_resetPassword.setVisible(true);
     }//GEN-LAST:event_btn_VerifyActionPerformed
 
@@ -384,7 +439,55 @@ public class AdminForgotPassword extends javax.swing.JFrame {
 
     private void btn_ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ResetActionPerformed
         // TODO add your handling code here:
-        
+        // Reset button action
+        String newPassword = new String(txt_newPassword.getPassword());
+        String confirmPassword = new String(txt_confirmPassword.getPassword());
+        String adminUsername = txt_adminUsername.getText();
+
+        if (!newPassword.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(this, "Passwords do not match. Please try again.");
+            return;
+        }
+
+        String connectionString = "jdbc:mysql://localhost:3306/LMS";
+        String Username = "root";
+        String Password = "";
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        try {
+            conn = DriverManager.getConnection(connectionString, Username, Password);
+
+            // SQL query to update the password
+            String sql = "UPDATE admin SET adminPassword = ? WHERE adminUsername = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, newPassword);
+            stmt.setString(2, adminUsername);
+
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(this, "Password Reset Successful!");
+                AdminLogin adminLogin = new AdminLogin();
+                adminLogin.setVisible(true);
+                this.setVisible(false); // Close the forgot password form
+            } else {
+                JOptionPane.showMessageDialog(this, "Error resetting password. Please try again.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error Closing Resources: " + ex.getMessage());
+            }
+        }
     }//GEN-LAST:event_btn_ResetActionPerformed
 
     private void checkBox_showConfirmPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBox_showConfirmPasswordActionPerformed
@@ -396,9 +499,9 @@ public class AdminForgotPassword extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_checkBox_showConfirmPasswordActionPerformed
 
-    private void txt_studentUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_studentUsernameActionPerformed
+    private void txt_adminUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminUsernameActionPerformed
         // TODO add your handling code here:
-        txt_studentUsername.addKeyListener(new KeyAdapter() {
+        txt_adminUsername.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent evt) {
                 if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -406,7 +509,7 @@ public class AdminForgotPassword extends javax.swing.JFrame {
                 }
             }
         });
-    }//GEN-LAST:event_txt_studentUsernameActionPerformed
+    }//GEN-LAST:event_txt_adminUsernameActionPerformed
 
     private void btn_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BackActionPerformed
         // TODO add your handling code here:
@@ -415,9 +518,9 @@ public class AdminForgotPassword extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_btn_BackActionPerformed
 
-    private void txt_studentUsername1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_studentUsername1ActionPerformed
+    private void txt_adminNICActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminNICActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_studentUsername1ActionPerformed
+    }//GEN-LAST:event_txt_adminNICActionPerformed
 
     /**
      * @param args the command line arguments
@@ -481,9 +584,9 @@ public class AdminForgotPassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lbl_adminForgotPassword;
     private javax.swing.JPanel pnl_resetPassword;
+    private javax.swing.JTextField txt_adminNIC;
+    private javax.swing.JTextField txt_adminUsername;
     private javax.swing.JPasswordField txt_confirmPassword;
     private javax.swing.JPasswordField txt_newPassword;
-    private javax.swing.JTextField txt_studentUsername;
-    private javax.swing.JTextField txt_studentUsername1;
     // End of variables declaration//GEN-END:variables
 }
