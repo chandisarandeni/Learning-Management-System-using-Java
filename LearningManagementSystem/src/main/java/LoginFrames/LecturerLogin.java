@@ -5,6 +5,15 @@
 package LoginFrames;
 
 import CommonClasses.ImageResizer;
+import LecturerActivities.LecturerDashboard;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,13 +26,13 @@ public class LecturerLogin extends javax.swing.JFrame {
      */
     public LecturerLogin() {
         initComponents();
-        
+
         String LecturerLoginBanner = "src\\main\\java\\LoginFrames\\Images\\LecturerLoginBanner.png";
         lbl_lecturerLoginImage.setIcon(ImageResizer.resizeImage(LecturerLoginBanner, 500, 500));
-        
+
         txt_lecturerUsername.setFocusable(true);
         txt_lecturerPassword.setFocusable(true);
-        
+
         checkBox_showPassword.setFocusable(false);
         btn_Login.setFocusable(false);
         btn_Cancel.setFocusable(false);
@@ -118,6 +127,11 @@ public class LecturerLogin extends javax.swing.JFrame {
         btn_Login.setAlignmentY(0.0F);
         btn_Login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_Login.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_LoginMouseClicked(evt);
+            }
+        });
         btn_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_LoginActionPerformed(evt);
@@ -298,10 +312,69 @@ public class LecturerLogin extends javax.swing.JFrame {
 
     private void btn_ResetPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ResetPasswordMouseClicked
         // TODO add your handling code here:
-        LecturerForgotPassword lecturerForgotPassword = new LecturerForgotPassword();
-        lecturerForgotPassword.setVisible(true);
-        this.hide();
     }//GEN-LAST:event_btn_ResetPasswordMouseClicked
+
+    private void btn_LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_LoginMouseClicked
+        // TODO add your handling code here:
+        String lecturerUsername = txt_lecturerUsername.getText();
+        String lecturerPassword = txt_lecturerPassword.getText();
+
+        String connectionString = "jdbc:mysql://localhost:3306/LMS";
+        String Username = "root";
+        String Password = "";
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            // Establish connection to the database
+            conn = DriverManager.getConnection(connectionString, Username, Password);
+
+            // SQL statement
+            String sql = "SELECT lecturerUsername, lecturerPassword FROM Lecturer WHERE lecturerUsername = ? AND lecturerPassword = ?";
+            stmt = conn.prepareStatement(sql);
+
+            // Set parameters
+            stmt.setString(1, lecturerUsername);
+            stmt.setString(2, lecturerPassword);
+
+            // Execute query
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Lecturer login successful
+                LecturerDashboard lecturerDashboard = new LecturerDashboard();
+                lecturerDashboard.setVisible(true);
+                this.setVisible(false);  // Hide login form
+            } else {
+                // Invalid username or password
+                JOptionPane.showMessageDialog(this, "Invalid username or password");
+
+                // Clear the input fields
+                txt_lecturerUsername.setText("");
+                txt_lecturerPassword.setText("");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LecturerLogin.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        } finally {
+            // Ensure resources are closed
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(LecturerLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btn_LoginMouseClicked
 
     /**
      * @param args the command line arguments
