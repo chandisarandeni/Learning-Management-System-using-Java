@@ -29,8 +29,9 @@ public class AdminDashboard extends javax.swing.JFrame {
      * Creates new form AdminDashboard
      */
     private final DrawerController drawer;
+    private String adminUsername;
     
-    public AdminDashboard() {
+    public AdminDashboard(String adminUsername) {
         initComponents();
         
         String MenuColored = "src\\main\\java\\StudentActivities\\Icons\\MenuColored.png";
@@ -53,6 +54,11 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .space(100)
                 .addChild(createDrawerItem("Logout"))
                 .build();
+        
+        this.adminUsername = adminUsername;
+
+        // Optionally, display the admin username in the dashboard
+        lbl_adminUsername.setText(adminUsername);
     }
     
     
@@ -133,7 +139,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         btn_Menu = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        lbl_studentID = new javax.swing.JLabel();
+        lbl_adminUsername = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -149,7 +155,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
         jLabel2.setText("_________________________________________________________");
 
-        lbl_studentID.setText("AdminID");
+        lbl_adminUsername.setText("AdminID");
 
         jLabel4.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
         jLabel4.setText("Admin Dashboard");
@@ -165,7 +171,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                         .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(lbl_studentID)))
+                        .addComponent(lbl_adminUsername)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
@@ -184,7 +190,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lbl_studentID))
+                        .addComponent(lbl_adminUsername))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel4)
@@ -236,7 +242,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminDashboard().setVisible(true);
+                new AdminDashboard("").setVisible(true);
             }
         });
     }
@@ -245,6 +251,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel btn_Menu;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel lbl_studentID;
+    private javax.swing.JLabel lbl_adminUsername;
     // End of variables declaration//GEN-END:variables
 }
