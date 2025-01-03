@@ -6,6 +6,8 @@ package LoginFrames;
 
 import CommonClasses.ImageResizer;
 import LecturerActivities.LecturerDashboard;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -105,6 +107,11 @@ public class LecturerLogin extends javax.swing.JFrame {
         jLabel2.setText("Riverstone Academy");
 
         txt_lecturerPassword.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        txt_lecturerPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_lecturerPasswordActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Cooper Black", 1, 24)); // NOI18N
         jLabel3.setText("________________________");
@@ -378,6 +385,18 @@ public class LecturerLogin extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btn_LoginMouseClicked
+
+    private void txt_lecturerPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lecturerPasswordActionPerformed
+        // TODO add your handling code here:
+        txt_lecturerPassword.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btn_Login.doClick(); // Simulate a button click
+                }
+            }
+        });
+    }//GEN-LAST:event_txt_lecturerPasswordActionPerformed
 
     /**
      * @param args the command line arguments

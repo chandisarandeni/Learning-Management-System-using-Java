@@ -30,6 +30,14 @@ public class LecturerForgotPassword extends javax.swing.JFrame {
         lbl_lecturerForgotPassword.setIcon(ImageResizer.resizeImage(LecturerForgotPassword, 500, 500));
 
         pnl_resetPassword.setVisible(false);
+        
+        txt_lecturerUsername.setFocusable(true);
+        txt_lecturerNIC.setVisible(true);
+        btn_Verify.setFocusable(false);
+        txt_newPassword.setFocusable(true);
+        txt_confirmPassword.setVisible(true);
+        btn_Reset.setFocusable(false);
+        btn_Cancel.setFocusable(false);
     }
 
     /**

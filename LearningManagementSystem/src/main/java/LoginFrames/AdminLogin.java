@@ -6,6 +6,8 @@ package LoginFrames;
 
 import AdminActivities.AdminDashboard;
 import CommonClasses.ImageResizer;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -145,6 +147,11 @@ public class AdminLogin extends javax.swing.JFrame {
         jLabel2.setText("Riverstone Academy");
 
         txt_adminPassword.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        txt_adminPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_adminPasswordActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Cooper Black", 1, 24)); // NOI18N
         jLabel3.setText("________________________");
@@ -370,6 +377,18 @@ public class AdminLogin extends javax.swing.JFrame {
         adminForgotPassword.setVisible(true);
         this.hide();
     }//GEN-LAST:event_btn_resetPasswordMouseClicked
+
+    private void txt_adminPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_adminPasswordActionPerformed
+        // TODO add your handling code here:
+        txt_adminPassword.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btn_Login.doClick(); // Simulate a button click
+                }
+            }
+        });
+    }//GEN-LAST:event_txt_adminPasswordActionPerformed
 
     /**
      * @param args the command line arguments

@@ -117,6 +117,11 @@ public class Home extends javax.swing.JFrame {
         jLabel11.setText(":");
 
         txt_studentPassword.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        txt_studentPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_studentPasswordActionPerformed(evt);
+            }
+        });
 
         checkBox_showPassword.setFont(new java.awt.Font("Calisto MT", 0, 10)); // NOI18N
         checkBox_showPassword.setText("Show");
@@ -284,7 +289,6 @@ public class Home extends javax.swing.JFrame {
                 }
             }
         });
-
     }//GEN-LAST:event_txt_studentUsernameActionPerformed
 
     private void checkBox_showPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBox_showPasswordActionPerformed
@@ -384,6 +388,18 @@ public class Home extends javax.swing.JFrame {
         studentForgotPassword.setVisible(true);
         this.hide();
     }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void txt_studentPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_studentPasswordActionPerformed
+        // TODO add your handling code here:
+        txt_studentPassword.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btn_Login.doClick(); // Simulate a button click
+                }
+            }
+        });
+    }//GEN-LAST:event_txt_studentPasswordActionPerformed
 
     /**
      * @param args the command line arguments

@@ -32,6 +32,18 @@ public class StudentForgotPassword extends javax.swing.JFrame {
         pnl_resetPassword.setVisible(false);
         
         btn_Verify.setFocusable(false);
+        
+        txt_studentUsername.setFocusable(true);
+        txt_studentNIC.setFocusable(true);
+        btn_Verify.setFocusable(false);
+        
+        txt_newPassword.setFocusable(true);
+        checkBox_showNewPassword.setFocusable(false);
+        txt_confirmPassword.setFocusable(true);
+        checkBox_showConfirmPassword.setFocusable(false);
+        btn_Reset.setFocusable(false);
+        btn_Cancel.setFocusable(false);
+        btn_Back.setVisible(false);
     }
 
     /**
@@ -199,6 +211,11 @@ public class StudentForgotPassword extends javax.swing.JFrame {
         jLabel21.setText(":");
 
         txt_confirmPassword.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        txt_confirmPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_confirmPasswordActionPerformed(evt);
+            }
+        });
 
         checkBox_showConfirmPassword.setFont(new java.awt.Font("Calisto MT", 0, 10)); // NOI18N
         checkBox_showConfirmPassword.setText("Show");
@@ -388,6 +405,14 @@ public class StudentForgotPassword extends javax.swing.JFrame {
 
     private void txt_studentNICActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_studentNICActionPerformed
         // TODO add your handling code here:
+        txt_studentNIC.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btn_Verify.doClick(); // Simulate a button click
+                }
+            }
+        });
     }//GEN-LAST:event_txt_studentNICActionPerformed
 
     private void btn_VerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerifyActionPerformed
@@ -541,6 +566,18 @@ public class StudentForgotPassword extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btn_ResetMouseClicked
+
+    private void txt_confirmPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_confirmPasswordActionPerformed
+        // TODO add your handling code here:
+        txt_confirmPassword.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btn_Reset.doClick(); // Simulate a button click
+                }
+            }
+        });
+    }//GEN-LAST:event_txt_confirmPasswordActionPerformed
 
     /**
      * @param args the command line arguments
