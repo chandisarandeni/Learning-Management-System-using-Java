@@ -30,6 +30,8 @@ public class StudentForgotPassword extends javax.swing.JFrame {
         lbl_studentForgotPassword.setIcon(ImageResizer.resizeImage(StudentForgotPassword, 500, 500));
 
         pnl_resetPassword.setVisible(false);
+        
+        btn_Verify.setFocusable(false);
     }
 
     /**
@@ -390,7 +392,6 @@ public class StudentForgotPassword extends javax.swing.JFrame {
 
     private void btn_VerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerifyActionPerformed
         // TODO add your handling code here:
-        // Verify button action
         String studentUsername = txt_studentUsername.getText();
         String studentNIC = txt_studentNIC.getText();
 
@@ -414,14 +415,16 @@ public class StudentForgotPassword extends javax.swing.JFrame {
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                JOptionPane.showMessageDialog(this, "Verification Successful! You can now reset your password.");
-                txt_newPassword.setEnabled(true);
-                txt_confirmPassword.setEnabled(true);
-                btn_Reset.setEnabled(true);
+//                JOptionPane.showMessageDialog(this, "Verification Successful! You can now reset your password.");
+                pnl_resetPassword.setVisible(true);
             } else {
+                pnl_resetPassword.setVisible(false);
+                txt_studentUsername.setText("");
+                txt_studentNIC.setText("");
                 JOptionPane.showMessageDialog(this, "Invalid Username or NIC. Please try again.");
             }
         } catch (SQLException ex) {
+            pnl_resetPassword.setVisible(false);
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
         } finally {
             try {
@@ -438,13 +441,10 @@ public class StudentForgotPassword extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Error Closing Resources: " + ex.getMessage());
             }
         }
-
-        pnl_resetPassword.setVisible(true);
     }//GEN-LAST:event_btn_VerifyActionPerformed
 
     private void btn_ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ResetActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_btn_ResetActionPerformed
 
     private void checkBox_showNewPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBox_showNewPasswordActionPerformed
@@ -488,6 +488,8 @@ public class StudentForgotPassword extends javax.swing.JFrame {
 
         if (!newPassword.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(this, "Passwords do not match. Please try again.");
+            txt_newPassword.setText("");
+            txt_confirmPassword.setText("");
             return;
         }
 
@@ -510,12 +512,19 @@ public class StudentForgotPassword extends javax.swing.JFrame {
             int rowsUpdated = stmt.executeUpdate();
             if (rowsUpdated > 0) {
                 JOptionPane.showMessageDialog(this, "Password Reset Successful!");
+                Home home = new Home();
+                home.setVisible(true);
+                this.setVisible(false);
                 this.setVisible(false); // Close the reset password form
             } else {
                 JOptionPane.showMessageDialog(this, "Error resetting password. Please try again.");
+                txt_newPassword.setText("");
+                txt_confirmPassword.setText("");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+            txt_newPassword.setText("");
+            txt_confirmPassword.setText("");
         } finally {
             try {
                 if (stmt != null) {
@@ -526,6 +535,8 @@ public class StudentForgotPassword extends javax.swing.JFrame {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error Closing Resources: " + ex.getMessage());
+                txt_newPassword.setText("");
+                txt_confirmPassword.setText("");
             }
         }
 

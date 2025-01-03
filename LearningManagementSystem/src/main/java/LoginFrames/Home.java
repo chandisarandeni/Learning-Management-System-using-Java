@@ -336,7 +336,6 @@ public class Home extends javax.swing.JFrame {
 
                 if (rs.next()) {
                     // Login successful
-                    JOptionPane.showMessageDialog(this, "Login Successful!");
                     StudentDashboard studentDashboard = new StudentDashboard();
                     studentDashboard.setVisible(true);
                     this.setVisible(false);
@@ -348,6 +347,8 @@ public class Home extends javax.swing.JFrame {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage());
+                txt_studentUsername.setText("");
+                txt_studentPassword.setText("");
             } finally {
                 // Close resources
                 try {
@@ -361,6 +362,8 @@ public class Home extends javax.swing.JFrame {
                         conn.close();
                     }
                 } catch (SQLException ex) {
+                    txt_studentUsername.setText("");
+                    txt_studentPassword.setText("");
                     JOptionPane.showMessageDialog(this, "Error Closing Resources: " + ex.getMessage());
                 }
             }
