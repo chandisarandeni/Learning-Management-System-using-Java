@@ -417,7 +417,7 @@ public class StudentForgotPassword extends javax.swing.JFrame {
 
     private void btn_VerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerifyActionPerformed
         // TODO add your handling code here:
-        String studentUsername = txt_studentUsername.getText();
+        String studentEmail = txt_studentUsername.getText();
         String studentNIC = txt_studentNIC.getText();
 
         String connectionString = "jdbc:mysql://localhost:3306/LMS";
@@ -432,9 +432,9 @@ public class StudentForgotPassword extends javax.swing.JFrame {
             conn = DriverManager.getConnection(connectionString, dbUsername, dbPassword);
 
             // SQL query to verify studentUsername and studentNIC
-            String sql = "SELECT studentUsername FROM Student WHERE studentUsername = ? AND studentNIC = ?";
+            String sql = "SELECT studentEmail FROM Student WHERE studentEmail = ? AND studentNIC = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, studentUsername);
+            stmt.setString(1, studentEmail);
             stmt.setString(2, studentNIC);
 
             rs = stmt.executeQuery();
@@ -509,7 +509,7 @@ public class StudentForgotPassword extends javax.swing.JFrame {
         // Reset button action
         String newPassword = new String(txt_newPassword.getPassword());
         String confirmPassword = new String(txt_confirmPassword.getPassword());
-        String studentUsername = txt_studentUsername.getText();
+        String studentEmail = txt_studentUsername.getText();
 
         if (!newPassword.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(this, "Passwords do not match. Please try again.");
@@ -529,10 +529,10 @@ public class StudentForgotPassword extends javax.swing.JFrame {
             conn = DriverManager.getConnection(connectionString, dbUsername, dbPassword);
 
             // SQL query to update the password
-            String sql = "UPDATE Student SET studentPassword = ? WHERE studentUsername = ?";
+            String sql = "UPDATE Student SET studentPassword = ? WHERE studentEmail = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, newPassword);
-            stmt.setString(2, studentUsername);
+            stmt.setString(2, studentEmail);
 
             int rowsUpdated = stmt.executeUpdate();
             if (rowsUpdated > 0) {

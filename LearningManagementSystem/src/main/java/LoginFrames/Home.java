@@ -330,7 +330,7 @@ public class Home extends javax.swing.JFrame {
                 conn = DriverManager.getConnection(connectionString, dbUsername, dbPassword);
 
                 // SQL query to validate login
-                String sql = "SELECT studentUsername, studentPassword FROM Student WHERE studentUsername = ? AND studentPassword = ?";
+                String sql = "SELECT studentEmail, studentPassword FROM Student WHERE studentEmail = ? AND studentPassword = ?";
                 stmt = conn.prepareStatement(sql);
                 stmt.setString(1, studentEmail);  // Corrected from 'txt_studentUsername' to 'studentEmail'
                 stmt.setString(2, studentPassword);

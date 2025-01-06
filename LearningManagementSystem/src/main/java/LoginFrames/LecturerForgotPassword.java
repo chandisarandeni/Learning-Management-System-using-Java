@@ -30,7 +30,7 @@ public class LecturerForgotPassword extends javax.swing.JFrame {
         lbl_lecturerForgotPassword.setIcon(ImageResizer.resizeImage(LecturerForgotPassword, 500, 500));
 
         pnl_resetPassword.setVisible(false);
-        
+
         txt_lecturerUsername.setFocusable(true);
         txt_lecturerNIC.setVisible(true);
         btn_Verify.setFocusable(false);
@@ -38,6 +38,9 @@ public class LecturerForgotPassword extends javax.swing.JFrame {
         txt_confirmPassword.setVisible(true);
         btn_Reset.setFocusable(false);
         btn_Cancel.setFocusable(false);
+        btn_Back.setFocusable(false);
+        checkBox_showNewPassword.setFocusable(false);
+        checkBox_showConfirmPassword.setFocusable(false);
     }
 
     /**
@@ -210,6 +213,11 @@ public class LecturerForgotPassword extends javax.swing.JFrame {
         jLabel21.setText(":");
 
         txt_confirmPassword.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        txt_confirmPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_confirmPasswordActionPerformed(evt);
+            }
+        });
 
         checkBox_showConfirmPassword.setFont(new java.awt.Font("Calisto MT", 0, 10)); // NOI18N
         checkBox_showConfirmPassword.setText("Show");
@@ -377,11 +385,19 @@ public class LecturerForgotPassword extends javax.swing.JFrame {
 
     private void txt_lecturerNICActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lecturerNICActionPerformed
         // TODO add your handling code here:
+        txt_lecturerNIC.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btn_Verify.doClick(); // Simulate a button click
+                }
+            }
+        });
     }//GEN-LAST:event_txt_lecturerNICActionPerformed
 
     private void txt_lecturerUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lecturerUsernameActionPerformed
         // TODO add your handling code here:
-        txt_lecturerUsername.addKeyListener(new KeyAdapter() {
+        txt_confirmPassword.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent evt) {
                 if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -400,8 +416,7 @@ public class LecturerForgotPassword extends javax.swing.JFrame {
 
     private void btn_VerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerifyActionPerformed
         // TODO add your handling code here:
-        // Verify button action
-        String lecturerUsername = txt_lecturerUsername.getText();
+        String lecturerEmail = txt_lecturerUsername.getText();
         String lecturerNIC = txt_lecturerNIC.getText();
 
         String connectionString = "jdbc:mysql://localhost:3306/LMS";
@@ -415,21 +430,20 @@ public class LecturerForgotPassword extends javax.swing.JFrame {
         try {
             conn = DriverManager.getConnection(connectionString, dbUsername, dbPassword);
 
-            // SQL query to verify lecturerUsername and lecturerNIC
-            String sql = "SELECT lecturerUsername FROM Lecturer WHERE lecturerUsername = ? AND lecturerNIC = ?";
+            // SQL query to verify lecturerEmail and lecturerNIC
+            String sql = "SELECT lecturerEmail FROM Lecturer WHERE lecturerEmail = ? AND lecturerNIC = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, lecturerUsername);
+            stmt.setString(1, lecturerEmail);
             stmt.setString(2, lecturerNIC);
 
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                JOptionPane.showMessageDialog(this, "Verification Successful! You can now reset your password.");
-                txt_newPassword.setEnabled(true);
-                txt_confirmPassword.setEnabled(true);
-                btn_Reset.setEnabled(true);
+                txt_newPassword.setEnabled(true);  // Enable new password field
+                txt_confirmPassword.setEnabled(true);  // Enable confirm password field
+                btn_Reset.setEnabled(true);  // Enable Reset button
             } else {
-                JOptionPane.showMessageDialog(this, "Invalid Username or NIC. Please try again.");
+                JOptionPane.showMessageDialog(this, "Invalid Email or NIC. Please try again.");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
@@ -448,7 +462,6 @@ public class LecturerForgotPassword extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Error Closing Resources: " + ex.getMessage());
             }
         }
-
         pnl_resetPassword.setVisible(true);
     }//GEN-LAST:event_btn_VerifyActionPerformed
 
@@ -473,7 +486,7 @@ public class LecturerForgotPassword extends javax.swing.JFrame {
         // Reset button action
         String newPassword = new String(txt_newPassword.getPassword());
         String confirmPassword = new String(txt_confirmPassword.getPassword());
-        String lecturerUsername = txt_lecturerUsername.getText();
+        String lecturerEmail = txt_lecturerUsername.getText();
 
         if (!newPassword.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(this, "Passwords do not match. Please try again.");
@@ -491,10 +504,10 @@ public class LecturerForgotPassword extends javax.swing.JFrame {
             conn = DriverManager.getConnection(connectionString, dbUsername, dbPassword);
 
             // SQL query to update the password
-            String sql = "UPDATE Lecturer SET lecturerPassword = ? WHERE lecturerUsername = ?";
+            String sql = "UPDATE Lecturer SET lecturerPassword = ? WHERE lecturerEmail = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, newPassword);
-            stmt.setString(2, lecturerUsername);
+            stmt.setString(2, lecturerEmail);
 
             int rowsUpdated = stmt.executeUpdate();
             if (rowsUpdated > 0) {
@@ -530,6 +543,18 @@ public class LecturerForgotPassword extends javax.swing.JFrame {
             txt_confirmPassword.setEchoChar('*'); // Hide password
         }
     }//GEN-LAST:event_checkBox_showConfirmPasswordActionPerformed
+
+    private void txt_confirmPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_confirmPasswordActionPerformed
+        // TODO add your handling code here:
+        txt_confirmPassword.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btn_Reset.doClick(); // Simulate a button click
+                }
+            }
+        });
+    }//GEN-LAST:event_txt_confirmPasswordActionPerformed
 
     /**
      * @param args the command line arguments

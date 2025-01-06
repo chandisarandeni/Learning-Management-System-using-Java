@@ -32,12 +32,12 @@ public class AdminLogin extends javax.swing.JFrame {
         String AdminBanner = "src\\main\\java\\LoginFrames\\Images\\AdminBanner.png";
         lbl_lecturerLoginImage.setIcon(ImageResizer.resizeImage(AdminBanner, 500, 500));
 
-//        txt_adminUsername.setFocusable(true);
-//        txt_adminPassword.setFocusable(true);
-//
-//        checkBox_showPassword.setFocusable(false);
-//        btn_Login.setFocusable(false);
-//        btn_Cancel.setFocusable(false);
+        txt_adminUsername.setFocusable(true);
+        txt_adminPassword.setFocusable(true);
+
+        checkBox_showPassword.setFocusable(false);
+        btn_Login.setFocusable(false);
+        btn_Cancel.setFocusable(false);
     }
 
     /**
