@@ -134,11 +134,6 @@ public class LecturerLogin extends javax.swing.JFrame {
         btn_Login.setAlignmentY(0.0F);
         btn_Login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_Login.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_Login.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_LoginMouseClicked(evt);
-            }
-        });
         btn_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_LoginActionPerformed(evt);
@@ -306,10 +301,6 @@ public class LecturerLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_checkBox_showPasswordActionPerformed
 
-    private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_LoginActionPerformed
-
     private void btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelActionPerformed
         // TODO add your handling code here:
         Home home = new Home();
@@ -324,9 +315,21 @@ public class LecturerLogin extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_btn_ResetPasswordMouseClicked
 
-    private void btn_LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_LoginMouseClicked
+    private void txt_lecturerPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lecturerPasswordActionPerformed
         // TODO add your handling code here:
-        String lecturerUsername = txt_lecturerUsername.getText();
+        txt_lecturerPassword.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btn_Login.doClick(); // Simulate a button click
+                }
+            }
+        });
+    }//GEN-LAST:event_txt_lecturerPasswordActionPerformed
+
+    private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
+        // TODO add your handling code here:
+        String lecturerEmail = txt_lecturerUsername.getText();
         String lecturerPassword = txt_lecturerPassword.getText();
 
         String connectionString = "jdbc:mysql://localhost:3306/LMS";
@@ -342,11 +345,11 @@ public class LecturerLogin extends javax.swing.JFrame {
             conn = DriverManager.getConnection(connectionString, Username, Password);
 
             // SQL statement
-            String sql = "SELECT lecturerUsername, lecturerPassword FROM Lecturer WHERE lecturerUsername = ? AND lecturerPassword = ?";
+            String sql = "SELECT lecturerEmail, lecturerPassword FROM Lecturer WHERE lecturerEmail = ? AND lecturerPassword = ?";
             stmt = conn.prepareStatement(sql);
 
             // Set parameters
-            stmt.setString(1, lecturerUsername);
+            stmt.setString(1, lecturerEmail);
             stmt.setString(2, lecturerPassword);
 
             // Execute query
@@ -384,19 +387,7 @@ public class LecturerLogin extends javax.swing.JFrame {
                 Logger.getLogger(LecturerLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_btn_LoginMouseClicked
-
-    private void txt_lecturerPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lecturerPasswordActionPerformed
-        // TODO add your handling code here:
-        txt_lecturerPassword.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent evt) {
-                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                    btn_Login.doClick(); // Simulate a button click
-                }
-            }
-        });
-    }//GEN-LAST:event_txt_lecturerPasswordActionPerformed
+    }//GEN-LAST:event_btn_LoginActionPerformed
 
     /**
      * @param args the command line arguments
