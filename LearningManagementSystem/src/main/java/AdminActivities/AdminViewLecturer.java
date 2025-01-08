@@ -25,12 +25,16 @@ public class AdminViewLecturer extends javax.swing.JFrame {
      */
     private final DrawerController drawer;
     public String adminUsername;
+    String studentID;
 
     public AdminViewLecturer(String adminUsername) {
         initComponents();
 
         this.adminUsername = adminUsername;
         lbl_adminUsername.setText(adminUsername);
+        
+        this.studentID = lbl_showStudentID.getText();
+
 
         String MenuColored = "src\\main\\java\\StudentActivities\\Icons\\MenuColored.png";
         btn_Menu.setIcon(ImageResizer.resizeImage(MenuColored, 35, 35));
@@ -214,7 +218,7 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lbl_showStudentID = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -262,8 +266,8 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel7.setText(":");
 
-        jLabel8.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        jLabel8.setText("Sample Data");
+        lbl_showStudentID.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        lbl_showStudentID.setText("Sample Data");
 
         jLabel9.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel9.setText("Full Name");
@@ -313,7 +317,7 @@ public class AdminViewLecturer extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jLabel7)
                         .addGap(28, 28, 28)
-                        .addComponent(jLabel8))
+                        .addComponent(lbl_showStudentID))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
@@ -351,7 +355,7 @@ public class AdminViewLecturer extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_showStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -393,8 +397,18 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         btn_Verify.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btn_Add.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\AdminActivities\\Icons\\Add.png")); // NOI18N
+        btn_Add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_AddMouseClicked(evt);
+            }
+        });
 
         btn_Edit.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\AdminActivities\\Icons\\Edit.png")); // NOI18N
+        btn_Edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_EditMouseClicked(evt);
+            }
+        });
 
         btn_Delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\AdminActivities\\Icons\\Delete.png")); // NOI18N
 
@@ -448,8 +462,8 @@ public class AdminViewLecturer extends javax.swing.JFrame {
                             .addComponent(btn_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Verify1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(68, 68, 68))))
+                            .addComponent(btn_Verify1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(90, 90, 90))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,9 +483,7 @@ public class AdminViewLecturer extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jTextField1))
+                            .addComponent(jTextField1)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -508,6 +520,20 @@ public class AdminViewLecturer extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void btn_AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AddMouseClicked
+        // TODO add your handling code here:
+        AdminViewLecturerRegister adminViewLecturerRegister = new AdminViewLecturerRegister();
+        adminViewLecturerRegister.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_btn_AddMouseClicked
+
+    private void btn_EditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EditMouseClicked
+        // TODO add your handling code here:
+        AdminViewLecturerEdit adminViewLecturerEdit = new AdminViewLecturerEdit(adminUsername);
+        adminViewLecturerEdit.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_btn_EditMouseClicked
 
     /**
      * @param args the command line arguments
@@ -568,10 +594,10 @@ public class AdminViewLecturer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_adminUsername;
+    private javax.swing.JLabel lbl_showStudentID;
     // End of variables declaration//GEN-END:variables
 }
