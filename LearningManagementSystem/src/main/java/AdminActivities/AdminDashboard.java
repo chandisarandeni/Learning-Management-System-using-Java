@@ -80,8 +80,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void handleDrawerItemSelection(String title) {
         switch (title) {
             case "Dashboard":
-                StudentDashboard studentDashboard = new StudentDashboard();
-                studentDashboard.setVisible(true);
+                AdminDashboard adminDashboard = new AdminDashboard(adminUsername);
+                adminDashboard.setVisible(true);
                 this.hide();
                 if (drawer.isShow()) {
                     Timer timer = new Timer(300, e -> drawer.hide());
@@ -92,9 +92,9 @@ public class AdminDashboard extends javax.swing.JFrame {
                 }
                 // Already on the Dashboard, do nothing or handle accordingly
                 break;
-            case "Time Table":
-                StudentViewTimetable studentViewTimetable = new StudentViewTimetable();
-                studentViewTimetable.setVisible(true);
+            case "Student":
+                AdminViewStudent adminViewStudent = new AdminViewStudent(adminUsername);
+                adminViewStudent.setVisible(true);
                 this.hide();
                 if (drawer.isShow()) {
                     Timer timer = new Timer(300, e -> drawer.hide());
@@ -103,6 +103,32 @@ public class AdminDashboard extends javax.swing.JFrame {
                     Timer timer = new Timer(300, e -> drawer.hide());
                     drawer.show();
                 }
+                // Already on the Dashboard, do nothing or handle accordingly
+                break;
+            case "Lecturer":
+                AdminViewLecturer adminViewLecturer = new AdminViewLecturer(adminUsername);
+                adminViewLecturer.setVisible(true);
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
+                break;
+            case "Time Table":
+                AdminViewTimetable adminViewTimetable = new AdminViewTimetable();
+                adminViewTimetable.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Course Content":
                 AdminViewCourseContent adminViewCourseContent = new AdminViewCourseContent(adminUsername);
@@ -115,17 +141,59 @@ public class AdminDashboard extends javax.swing.JFrame {
                     Timer timer = new Timer(300, e -> drawer.hide());
                     drawer.show();
                 }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Examination":
-                // Show the Examination screen
                 AdminViewExamination adminViewExamination = new AdminViewExamination(adminUsername);
                 adminViewExamination.setVisible(true);
-                this.setVisible(false);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
+                break;
+            case "Message":
+                AdminViewMessage adminViewMessage = new AdminViewMessage(adminUsername);
+                adminViewMessage.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
+                break;
+            case "Settings":
+                AdminViewSettings adminViewSettings = new AdminViewSettings(adminUsername);
+                adminViewSettings.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Logout":
-//                Home home = new Home();
-//                home.setVisible(true);
-//                this.setVisible(false);
+                Home home = new Home();
+                home.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             default:
                 // Handle unknown cases
