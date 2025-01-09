@@ -26,12 +26,11 @@ public class LecturerDashboard extends javax.swing.JFrame {
     /**
      * Creates new form LecturerDashboard
      */
-    
     private final DrawerController drawer;
-    
+
     public LecturerDashboard() {
         initComponents();
-        
+
         String MenuColored = "src\\main\\java\\StudentActivities\\Icons\\MenuColored.png";
         btn_Menu.setIcon(ImageResizer.resizeImage(MenuColored, 35, 35));
 
@@ -51,8 +50,7 @@ public class LecturerDashboard extends javax.swing.JFrame {
                 .addChild(createDrawerItem("Logout"))
                 .build();
     }
-    
-    
+
     private DrawerItem createDrawerItem(String title) {
         DrawerItem item = new DrawerItem(title)
                 .build();
@@ -79,8 +77,8 @@ public class LecturerDashboard extends javax.swing.JFrame {
                 // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Time Table":
-                StudentViewTimetable studentViewTimetable = new StudentViewTimetable();
-                studentViewTimetable.setVisible(true);
+                LecturerViewTimetable lecturerViewTimetable = new LecturerViewTimetable();
+                lecturerViewTimetable.setVisible(true);
                 this.hide();
                 if (drawer.isShow()) {
                     Timer timer = new Timer(300, e -> drawer.hide());
@@ -89,10 +87,11 @@ public class LecturerDashboard extends javax.swing.JFrame {
                     Timer timer = new Timer(300, e -> drawer.hide());
                     drawer.show();
                 }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Course Content":
-                StudentViewCourseContent studentViewCourseContent = new StudentViewCourseContent();
-                studentViewCourseContent.setVisible(true);
+                LecturerViewCourseContent lecturerViewCourseContent = new LecturerViewCourseContent();
+                lecturerViewCourseContent.setVisible(true);
                 this.hide();
                 if (drawer.isShow()) {
                     Timer timer = new Timer(300, e -> drawer.hide());
@@ -101,17 +100,59 @@ public class LecturerDashboard extends javax.swing.JFrame {
                     Timer timer = new Timer(300, e -> drawer.hide());
                     drawer.show();
                 }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Examination":
-                // Show the Examination screen
-//                AdminViewExamination adminViewExamination = new AdminViewExamination();
-//                adminViewExamination.setVisible(true);
-//                this.setVisible(false);
+                LecturerViewExamination lectureViewExamination = new LecturerViewExamination();
+                lectureViewExamination.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
+                break;
+            case "Message":
+                LecturerViewMessages lecturerViewMessages = new LecturerViewMessages();
+                lecturerViewMessages.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
+                break;
+            case "Settings":
+                LecturerViewSettings lecturerViewSettings = new LecturerViewSettings();
+                lecturerViewSettings.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Logout":
-//                Home home = new Home();
-//                home.setVisible(true);
-//                this.setVisible(false);
+                Home home = new Home();
+                home.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             default:
                 // Handle unknown cases
@@ -136,25 +177,26 @@ public class LecturerDashboard extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -212,76 +254,76 @@ public class LecturerDashboard extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel3.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel3.setText("Subject");
-
-        jLabel5.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel5.setText(":");
-
-        jLabel6.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel6.setText("Sample Data");
+        jLabel22.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel22.setText("There have no lecture today");
 
         jLabel7.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
         jLabel7.setText(":");
 
-        jLabel8.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel8.setText("Lecturer");
-
-        jLabel9.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel9.setText("Sample Data");
-
-        jLabel10.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel10.setText(":");
-
-        jLabel11.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel11.setText("Lecture Hall");
-
-        jLabel12.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel12.setText("Sample Data");
-
-        jLabel13.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel13.setText("Date");
-
-        jLabel14.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel14.setText(":");
-
-        jLabel15.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel15.setText("Sample Data");
-
-        jLabel16.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel16.setText(":");
+        jLabel18.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel18.setText("Time");
 
         jLabel17.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
         jLabel17.setText("Sample Data");
 
-        jLabel18.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel18.setText("Time");
+        jLabel3.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel3.setText("Subject");
 
-        jLabel19.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel19.setText(":");
+        jLabel15.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel15.setText("Sample Data");
 
-        jLabel20.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel20.setText("Additional");
+        jLabel14.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel14.setText(":");
+
+        jLabel13.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel13.setText("Date");
+
+        jLabel12.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel12.setText("Sample Data");
+
+        jLabel11.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel11.setText("Lecture Hall");
+
+        jLabel10.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel10.setText(":");
 
         jLabel21.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
         jLabel21.setText("Sample Data");
 
-        jLabel22.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
-        jLabel22.setText("There have no lecture today");
+        jLabel9.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel9.setText("Sample Data");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jLabel20.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel20.setText("Additional");
+
+        jLabel8.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel8.setText("Lecturer");
+
+        jLabel19.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel19.setText(":");
+
+        jLabel6.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel6.setText("Sample Data");
+
+        jLabel5.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel5.setText(":");
+
+        jLabel16.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
+        jLabel16.setText(":");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel8)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel13)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel14))
@@ -289,66 +331,84 @@ public class LecturerDashboard extends javax.swing.JFrame {
                                 .addComponent(jLabel11))
                             .addComponent(jLabel18))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addComponent(jLabel17)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
                                         .addComponent(jLabel7))
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel6)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel22)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21)))))
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel21)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel17))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel12))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel21))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jLabel22)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel12))
+                .addGap(8, 8, 8)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel21))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel22)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -481,6 +541,7 @@ public class LecturerDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_studentID;
