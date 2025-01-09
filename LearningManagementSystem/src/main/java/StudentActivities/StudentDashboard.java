@@ -84,6 +84,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                     Timer timer = new Timer(300, e -> drawer.hide());
                     drawer.show();
                 }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Course Content":
                 StudentViewCourseContent studentViewCourseContent = new StudentViewCourseContent();
@@ -96,17 +97,59 @@ public class StudentDashboard extends javax.swing.JFrame {
                     Timer timer = new Timer(300, e -> drawer.hide());
                     drawer.show();
                 }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Examination":
-                // Show the Examination screen
-//                AdminViewExamination adminViewExamination = new AdminViewExamination();
-//                adminViewExamination.setVisible(true);
-//                this.setVisible(false);
+                StudentViewExamination studentViewExamination = new StudentViewExamination();
+                studentViewExamination.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
+                break;
+            case "Message":
+                StudentViewMessages studentViewMessages = new StudentViewMessages();
+                studentViewMessages.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
+                break;
+            case "Settings":
+                StudentViewSettings studentViewSettings = new StudentViewSettings();
+                studentViewSettings.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Logout":
-//                Home home = new Home();
-//                home.setVisible(true);
-//                this.setVisible(false);
+                Home home = new Home();
+                home.setVisible(true);
+                this.hide();
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
                 break;
             default:
                 // Handle unknown cases
