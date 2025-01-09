@@ -12,6 +12,7 @@ import StudentActivities.StudentDashboard;
 import StudentActivities.StudentViewCourseContent;
 import StudentActivities.StudentViewTimetable;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -23,6 +24,7 @@ import javaswingdev.drawer.DrawerItem;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import AdminActivities.CommonClasses.*;
 
 /**
  *
@@ -65,6 +67,18 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         // Optionally, display the admin username in the dashboard
         lbl_adminUsername.setText(adminUsername);
+
+        //Show Student Count on Admin Dashboard
+        StudentCount studentCount = new StudentCount();
+        int totalStudents = studentCount.getTotalStudents(); // Get the total student count
+        lbl_totalStudentCount.setText("" + totalStudents); // Display the count on the label
+        
+        
+        //Show Lecturer Count on Dashboard
+        LecturerCount lecturerCount = new LecturerCount();
+        int totalLecturers = lecturerCount.getTotalLecturers();
+        lbl_totalLecturerCount.setText("" + totalLecturers);
+
     }
 
     private DrawerItem createDrawerItem(String title) {
@@ -222,15 +236,15 @@ public class AdminDashboard extends javax.swing.JFrame {
         pnl_totalStudent = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lbl_totalStudentCount = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lbl_totalLecturerCount = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lbl_totalCourseCount = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -291,33 +305,34 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Students");
 
-        jLabel11.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("250");
-        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbl_totalStudentCount.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
+        lbl_totalStudentCount.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_totalStudentCount.setText("99");
+        lbl_totalStudentCount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout pnl_totalStudentLayout = new javax.swing.GroupLayout(pnl_totalStudent);
         pnl_totalStudent.setLayout(pnl_totalStudentLayout);
         pnl_totalStudentLayout.setHorizontalGroup(
             pnl_totalStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_totalStudentLayout.createSequentialGroup()
+            .addGroup(pnl_totalStudentLayout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(pnl_totalStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(pnl_totalStudentLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel3)))
-                .addGap(14, 14, 14))
-            .addGroup(pnl_totalStudentLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_totalStudentLayout.createSequentialGroup()
+                        .addGroup(pnl_totalStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(pnl_totalStudentLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel3)))
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_totalStudentLayout.createSequentialGroup()
+                        .addComponent(lbl_totalStudentCount)
+                        .addGap(53, 53, 53))))
         );
         pnl_totalStudentLayout.setVerticalGroup(
             pnl_totalStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_totalStudentLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_totalStudentCount, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -336,10 +351,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Lecturers");
 
-        jLabel12.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("25");
-        jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbl_totalLecturerCount.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
+        lbl_totalLecturerCount.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_totalLecturerCount.setText("25");
+        lbl_totalLecturerCount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -355,14 +370,14 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(jLabel12)
+                .addComponent(lbl_totalLecturerCount)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_totalLecturerCount, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -381,10 +396,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Courses");
 
-        jLabel13.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("12");
-        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbl_totalCourseCount.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
+        lbl_totalCourseCount.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_totalCourseCount.setText("12");
+        lbl_totalCourseCount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -401,14 +416,14 @@ public class AdminDashboard extends javax.swing.JFrame {
                         .addGap(38, 38, 38))))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(jLabel13)
+                .addComponent(lbl_totalCourseCount)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_totalCourseCount, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -604,9 +619,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private de.wannawork.jcalendar.JCalendarPanel jCalendarPanel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -623,6 +635,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_adminUsername;
+    private javax.swing.JLabel lbl_totalCourseCount;
+    private javax.swing.JLabel lbl_totalLecturerCount;
+    private javax.swing.JLabel lbl_totalStudentCount;
     private javax.swing.JPanel pnl_totalStudent;
     // End of variables declaration//GEN-END:variables
 }
