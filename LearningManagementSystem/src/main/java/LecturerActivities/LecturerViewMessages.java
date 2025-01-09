@@ -170,7 +170,7 @@ public class LecturerViewMessages extends javax.swing.JFrame {
     private void initComponents() {
 
         lbl_lecturerLoginImage = new javax.swing.JLabel();
-        btn_Menu3 = new javax.swing.JLabel();
+        btn_Menu = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lbl_adminUsername = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -179,11 +179,11 @@ public class LecturerViewMessages extends javax.swing.JFrame {
 
         lbl_lecturerLoginImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\LoginFrames\\Images\\Error.png")); // NOI18N
 
-        btn_Menu3.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\StudentActivities\\Icons\\MenuColored.png")); // NOI18N
-        btn_Menu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_Menu3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_Menu.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\StudentActivities\\Icons\\MenuColored.png")); // NOI18N
+        btn_Menu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_Menu3MouseClicked(evt);
+                btn_MenuMouseClicked(evt);
             }
         });
 
@@ -203,7 +203,7 @@ public class LecturerViewMessages extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_Menu3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(330, 330, 330)
@@ -224,7 +224,7 @@ public class LecturerViewMessages extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(btn_Menu3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -238,16 +238,17 @@ public class LecturerViewMessages extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_Menu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Menu3MouseClicked
+    private void btn_MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MenuMouseClicked
         // TODO add your handling code here:
         if (drawer.isShow()) {
             drawer.hide();
         } else {
             drawer.show();
         }
-    }//GEN-LAST:event_btn_Menu3MouseClicked
+    }//GEN-LAST:event_btn_MenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -286,9 +287,6 @@ public class LecturerViewMessages extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_Menu;
-    private javax.swing.JLabel btn_Menu1;
-    private javax.swing.JLabel btn_Menu2;
-    private javax.swing.JLabel btn_Menu3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbl_adminUsername;
