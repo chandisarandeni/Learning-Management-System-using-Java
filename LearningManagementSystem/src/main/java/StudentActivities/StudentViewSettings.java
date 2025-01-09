@@ -22,10 +22,14 @@ public class StudentViewSettings extends javax.swing.JFrame {
      * Creates new form StudentViewSettings
      */
     private final DrawerController drawer;
+    String studentID;
 
     public StudentViewSettings() {
         initComponents();
 
+        this.studentID = studentID;
+        lbl_studentID.setText(studentID);
+        
         String MenuColored = "src\\main\\java\\StudentActivities\\Icons\\MenuColored.png";
         btn_Menu.setIcon(ImageResizer.resizeImage(MenuColored, 35, 35));
 
@@ -59,7 +63,7 @@ public class StudentViewSettings extends javax.swing.JFrame {
     private void handleDrawerItemSelection(String title) {
         switch (title) {
             case "Dashboard":
-                StudentDashboard studentDashboard = new StudentDashboard();
+                StudentDashboard studentDashboard = new StudentDashboard(studentID);
                 studentDashboard.setVisible(true);
                 this.hide();
                 if (drawer.isShow()) {
@@ -85,7 +89,7 @@ public class StudentViewSettings extends javax.swing.JFrame {
                 // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Course Content":
-                StudentViewCourseContent studentViewCourseContent = new StudentViewCourseContent();
+                StudentViewCourseContent studentViewCourseContent = new StudentViewCourseContent(studentID);
                 studentViewCourseContent.setVisible(true);
                 this.hide();
                 if (drawer.isShow()) {

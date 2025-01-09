@@ -5,6 +5,7 @@
 package LoginFrames;
 
 import CommonClasses.ImageResizer;
+import StudentActivities.CommonClasses.StudentIDRetriever;
 import StudentActivities.StudentDashboard;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -302,7 +303,16 @@ public class Home extends javax.swing.JFrame {
 
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
         // TODO add your handling code here:
+        String studentID = StudentIDRetriever.getStudentIDByEmail(txt_studentUsername.getText());
+
+        if (studentID != null) {
+            System.out.println("Student ID: " + studentID);
+        } else {
+            System.out.println("No student found with this email.");
+        }
+
         String Username = txt_studentUsername.getText();
+
         if (Username.equals("./admin")) {
             AdminLogin adminLogin = new AdminLogin();
             adminLogin.setVisible(true);
@@ -340,7 +350,7 @@ public class Home extends javax.swing.JFrame {
 
                 if (rs.next()) {
                     // Login successful
-                    StudentDashboard studentDashboard = new StudentDashboard();
+                    StudentDashboard studentDashboard = new StudentDashboard(studentID);
                     studentDashboard.setVisible(true);
                     this.setVisible(false);
                 } else {

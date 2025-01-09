@@ -66,8 +66,8 @@ public class LecturerViewSettings extends javax.swing.JFrame {
     private void handleDrawerItemSelection(String title) {
         switch (title) {
             case "Dashboard":
-                StudentDashboard studentDashboard = new StudentDashboard();
-                studentDashboard.setVisible(true);
+                LecturerDashboard lecturerDashboard = new LecturerDashboard();
+                lecturerDashboard.setVisible(true);
                 this.hide();
                 if (drawer.isShow()) {
                     Timer timer = new Timer(300, e -> drawer.hide());

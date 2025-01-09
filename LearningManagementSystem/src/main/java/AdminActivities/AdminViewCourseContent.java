@@ -4,6 +4,12 @@
  */
 package AdminActivities;
 
+import AdminActivities.CommonClasses.AvailableSeatCalculator;
+import AdminActivities.CommonClasses.AvailableSeatProgressBar;
+import AdminActivities.CommonClasses.CourseDataRetriever;
+import AdminActivities.CommonClasses.CourseIDLoader;
+import AdminActivities.CommonClasses.StudentCountByCourse;
+import AdminActivities.CommonClasses.SubjectDataRetriever;
 import CommonClasses.ImageResizer;
 import LoginFrames.Home;
 import StudentActivities.StudentDashboard;
@@ -55,6 +61,9 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
 
         // Optionally, display the admin username in the dashboard
         lbl_adminUsername.setText(adminUsername);
+
+        SubjectDataRetriever.loadSubjectData(tbl_moduleAndStatus);
+        CourseIDLoader.loadCourseIDs(comboBox_courseID);
     }
 
     private DrawerItem createDrawerItem(String title) {
@@ -208,21 +217,20 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        btn_Verify = new javax.swing.JButton();
+        comboBox_courseID = new javax.swing.JComboBox<>();
         pnl_totalStudent2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lbl_totalNumberOfStudents = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        lbl_AvailableSeatCount = new javax.swing.JLabel();
+        progressBar_AvailableSeatCount = new javax.swing.JProgressBar();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_moduleAndStatus = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -253,18 +261,20 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel7.setText("Course ID :");
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--" }));
-
-        btn_Verify.setBackground(new java.awt.Color(0, 0, 0));
-        btn_Verify.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
-        btn_Verify.setForeground(new java.awt.Color(255, 255, 255));
-        btn_Verify.setText("Search");
-        btn_Verify.setAlignmentY(0.0F);
-        btn_Verify.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_Verify.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        comboBox_courseID.setBackground(new java.awt.Color(255, 255, 255));
+        comboBox_courseID.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        comboBox_courseID.setForeground(new java.awt.Color(255, 255, 255));
+        comboBox_courseID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--" }));
+        comboBox_courseID.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBox_courseIDItemStateChanged(evt);
+            }
+        });
+        comboBox_courseID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox_courseIDActionPerformed(evt);
+            }
+        });
 
         pnl_totalStudent2.setBackground(new java.awt.Color(0, 104, 104));
         pnl_totalStudent2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -277,35 +287,33 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Registered Students");
 
-        jLabel16.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("250");
-        jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbl_totalNumberOfStudents.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
+        lbl_totalNumberOfStudents.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_totalNumberOfStudents.setText("1");
+        lbl_totalNumberOfStudents.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout pnl_totalStudent2Layout = new javax.swing.GroupLayout(pnl_totalStudent2);
         pnl_totalStudent2.setLayout(pnl_totalStudent2Layout);
         pnl_totalStudent2Layout.setHorizontalGroup(
             pnl_totalStudent2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_totalStudent2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_totalStudent2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnl_totalStudent2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel13)))
-                .addGap(14, 14, 14))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_totalNumberOfStudents)
+                .addGap(51, 51, 51))
             .addGroup(pnl_totalStudent2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel16)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(pnl_totalStudent2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel13))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
         pnl_totalStudent2Layout.setVerticalGroup(
             pnl_totalStudent2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_totalStudent2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_totalNumberOfStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -317,8 +325,8 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel18.setText(":");
 
-        jLabel19.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        jLabel19.setText("09");
+        lbl_AvailableSeatCount.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        lbl_AvailableSeatCount.setText("09");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -327,32 +335,32 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel14)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7))
-                            .addGap(18, 18, 18))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap()))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel18)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel19)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_Verify, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnl_totalStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(comboBox_courseID, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(progressBar_AvailableSeatCount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel17)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel18)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lbl_AvailableSeatCount))
+                                    .addComponent(pnl_totalStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,18 +372,16 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_Verify, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(comboBox_courseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(pnl_totalStudent2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_AvailableSeatCount, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addComponent(progressBar_AvailableSeatCount, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -387,7 +393,7 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
         jLabel6.setText("___________________________________________________________________");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_moduleAndStatus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -406,11 +412,11 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(40);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(40);
+        jScrollPane1.setViewportView(tbl_moduleAndStatus);
+        if (tbl_moduleAndStatus.getColumnModel().getColumnCount() > 0) {
+            tbl_moduleAndStatus.getColumnModel().getColumn(0).setPreferredWidth(200);
+            tbl_moduleAndStatus.getColumnModel().getColumn(1).setPreferredWidth(40);
+            tbl_moduleAndStatus.getColumnModel().getColumn(2).setPreferredWidth(40);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -483,7 +489,7 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -498,6 +504,44 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
             drawer.show();
         }
     }//GEN-LAST:event_btn_MenuMouseClicked
+
+    private void comboBox_courseIDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBox_courseIDItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox_courseIDItemStateChanged
+
+    private void comboBox_courseIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox_courseIDActionPerformed
+        // TODO add your handling code here:
+        comboBox_courseID.addActionListener(e -> {
+            String selectedCourseID = (String) comboBox_courseID.getSelectedItem();
+            if (selectedCourseID != null) {
+                CourseDataRetriever.loadCourseData(tbl_moduleAndStatus, selectedCourseID);
+            }
+        });
+
+        comboBox_courseID.addActionListener(e -> {
+            String selectedCourseID = (String) comboBox_courseID.getSelectedItem();
+            if (selectedCourseID != null) {
+                int totalStudents = StudentCountByCourse.getTotalStudentsForCourse(selectedCourseID);
+                lbl_totalNumberOfStudents.setText("" + totalStudents);
+            }
+        });
+
+        comboBox_courseID.addActionListener(e -> {
+            String selectedCourseID = (String) comboBox_courseID.getSelectedItem();
+            if (selectedCourseID != null) {
+                int availableSeats = AvailableSeatCalculator.getAvailableSeats(selectedCourseID);
+                lbl_AvailableSeatCount.setText("" + availableSeats);
+            }
+        });
+
+        comboBox_courseID.addActionListener(e -> {
+            String selectedCourseID = (String) comboBox_courseID.getSelectedItem();
+            if (selectedCourseID != null) {
+                AvailableSeatProgressBar.updateProgressBar(progressBar_AvailableSeatCount, selectedCourseID);
+            }
+        });
+
+    }//GEN-LAST:event_comboBox_courseIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -536,16 +580,13 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_Menu;
-    private javax.swing.JButton btn_Verify;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> comboBox_courseID;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -553,10 +594,12 @@ public class AdminViewCourseContent extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbl_AvailableSeatCount;
     private javax.swing.JLabel lbl_adminUsername;
+    private javax.swing.JLabel lbl_totalNumberOfStudents;
     private javax.swing.JPanel pnl_totalStudent2;
+    private javax.swing.JProgressBar progressBar_AvailableSeatCount;
+    private javax.swing.JTable tbl_moduleAndStatus;
     // End of variables declaration//GEN-END:variables
 }

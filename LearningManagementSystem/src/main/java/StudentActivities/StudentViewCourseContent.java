@@ -6,12 +6,14 @@ package StudentActivities;
 
 import CommonClasses.ImageResizer;
 import LoginFrames.Home;
+import StudentActivities.CommonClasses.StudentCourseContentLoader;
 import java.awt.Color;
 import java.awt.Font;
 import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -24,10 +26,14 @@ public class StudentViewCourseContent extends javax.swing.JFrame {
      * Creates new form StudentViewCourseContent
      */
     private final DrawerController drawer;
+    String studentID;
 
-    public StudentViewCourseContent() {
+    public StudentViewCourseContent(String studentID) {
         initComponents();
 
+        this.studentID = studentID;
+        lbl_studentID.setText(studentID);
+        
         String MenuColored = "src\\main\\java\\StudentActivities\\Icons\\MenuColored.png";
         btn_Menu.setIcon(ImageResizer.resizeImage(MenuColored, 35, 35));
 
@@ -46,6 +52,13 @@ public class StudentViewCourseContent extends javax.swing.JFrame {
                 .space(100)
                 .addChild(createDrawerItem("Logout"))
                 .build();
+
+        if (studentID != null && !studentID.isEmpty()) {
+            StudentCourseContentLoader.loadCourseContent(tbl_courseContent, studentID);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a valid student.");
+        }
+
     }
 
     private DrawerItem createDrawerItem(String title) {
@@ -61,7 +74,7 @@ public class StudentViewCourseContent extends javax.swing.JFrame {
     private void handleDrawerItemSelection(String title) {
         switch (title) {
             case "Dashboard":
-                StudentDashboard studentDashboard = new StudentDashboard();
+                StudentDashboard studentDashboard = new StudentDashboard(studentID);
                 studentDashboard.setVisible(true);
                 this.hide();
                 if (drawer.isShow()) {
@@ -87,7 +100,7 @@ public class StudentViewCourseContent extends javax.swing.JFrame {
                 // Already on the Dashboard, do nothing or handle accordingly
                 break;
             case "Course Content":
-                StudentViewCourseContent studentViewCourseContent = new StudentViewCourseContent();
+                StudentViewCourseContent studentViewCourseContent = new StudentViewCourseContent(studentID);
                 studentViewCourseContent.setVisible(true);
                 this.hide();
                 if (drawer.isShow()) {
@@ -170,7 +183,7 @@ public class StudentViewCourseContent extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lbl_studentID = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_courseContent = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -188,22 +201,22 @@ public class StudentViewCourseContent extends javax.swing.JFrame {
 
         lbl_studentID.setText("StudentID");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_courseContent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Subject", "Lecturer", "Status"
+                "Subject", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -214,13 +227,12 @@ public class StudentViewCourseContent extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(250);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(250);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane1.setViewportView(tbl_courseContent);
+        if (tbl_courseContent.getColumnModel().getColumnCount() > 0) {
+            tbl_courseContent.getColumnModel().getColumn(0).setResizable(false);
+            tbl_courseContent.getColumnModel().getColumn(0).setPreferredWidth(350);
+            tbl_courseContent.getColumnModel().getColumn(1).setResizable(false);
+            tbl_courseContent.getColumnModel().getColumn(1).setPreferredWidth(35);
         }
 
         jLabel4.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
@@ -312,7 +324,7 @@ public class StudentViewCourseContent extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentViewCourseContent().setVisible(true);
+                new StudentViewCourseContent("").setVisible(true);
             }
         });
     }
@@ -322,7 +334,7 @@ public class StudentViewCourseContent extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_studentID;
+    private javax.swing.JTable tbl_courseContent;
     // End of variables declaration//GEN-END:variables
 }

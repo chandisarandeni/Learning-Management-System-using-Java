@@ -130,6 +130,9 @@
           <Image iconType="2" name="C:\Users\chand\OneDrive\Desktop\GitHub Clones\Learning-Management-System-using-Java\LearningManagementSystem\src\main\java\AdminActivities\Icons\Add.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_AddMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="btn_Edit">
       <Properties>
@@ -137,6 +140,9 @@
           <Image iconType="2" name="C:\Users\chand\OneDrive\Desktop\GitHub Clones\Learning-Management-System-using-Java\LearningManagementSystem\src\main\java\AdminActivities\Icons\Edit.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_EditMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_adminUsername">
       <Properties>

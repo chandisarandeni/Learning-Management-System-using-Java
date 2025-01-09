@@ -243,8 +243,18 @@ public class AdminViewStudent extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btn_Add.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\AdminActivities\\Icons\\Add.png")); // NOI18N
+        btn_Add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_AddMouseClicked(evt);
+            }
+        });
 
         btn_Edit.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\AdminActivities\\Icons\\Edit.png")); // NOI18N
+        btn_Edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_EditMouseClicked(evt);
+            }
+        });
 
         lbl_adminUsername.setText("AdminID");
 
@@ -549,6 +559,20 @@ public class AdminViewStudent extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void btn_AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AddMouseClicked
+        // TODO add your handling code here:
+        AdminViewStudentRegister adminViewStudentRegister = new AdminViewStudentRegister(adminUsername);
+        adminViewStudentRegister.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_btn_AddMouseClicked
+
+    private void btn_EditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EditMouseClicked
+        // TODO add your handling code here:
+        AdminViewStudentEdit adminViewStudentEdit = new AdminViewStudentEdit();
+        adminViewStudentEdit.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_btn_EditMouseClicked
 
     /**
      * @param args the command line arguments
