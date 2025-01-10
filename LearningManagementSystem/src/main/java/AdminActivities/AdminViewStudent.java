@@ -606,11 +606,11 @@ public class AdminViewStudent extends javax.swing.JFrame {
     private void btn_Verify1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Verify1ActionPerformed
         // TODO add your handling code here:
         
-        String studentID = "S-002";
+        String studentID = "S-001";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/LMS?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "")) {
-                String reportPath = "CC:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\AdminActivities\\Reports\\StudentDetailsReport.jrxml";
+                String reportPath = "C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\AdminActivities\\Reports\\StudentDetailsReport.jrxml";
                 JasperReport jr = JasperCompileManager.compileReport(reportPath);
 
                 // Create a parameter map
