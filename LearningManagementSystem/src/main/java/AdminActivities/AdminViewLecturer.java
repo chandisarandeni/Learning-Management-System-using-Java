@@ -4,6 +4,7 @@
  */
 package AdminActivities;
 
+import AdminActivities.CommonClasses.LecturerDetailsLoader;
 import CommonClasses.ImageResizer;
 import LoginFrames.Home;
 import StudentActivities.StudentDashboard;
@@ -12,6 +13,7 @@ import java.awt.Color;
 import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -32,13 +34,12 @@ public class AdminViewLecturer extends javax.swing.JFrame {
 
         this.adminUsername = adminUsername;
         lbl_adminUsername.setText(adminUsername);
-        
-        this.studentID = lbl_showStudentID.getText();
 
+        this.studentID = lbl_lecturerID.getText();
 
         String MenuColored = "src\\main\\java\\StudentActivities\\Icons\\MenuColored.png";
         btn_Menu.setIcon(ImageResizer.resizeImage(MenuColored, 35, 35));
-        
+
         String Add = "src\\main\\java\\AdminActivities\\Icons\\Add.png";
         btn_Add.setIcon(ImageResizer.resizeImage(Add, 35, 35));
         String Edit = "src\\main\\java\\AdminActivities\\Icons\\Edit.png";
@@ -218,21 +219,22 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        lbl_showStudentID = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_lecturerEmail = new javax.swing.JLabel();
+        lbl_lecturerID = new javax.swing.JLabel();
+        lbl_lecturerName = new javax.swing.JLabel();
+        lbl_lecturerNIC = new javax.swing.JLabel();
+        lbl_lecturerContact = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_lecturerID = new javax.swing.JTextField();
         btn_Verify = new javax.swing.JButton();
         btn_Add = new javax.swing.JLabel();
         btn_Edit = new javax.swing.JLabel();
@@ -266,17 +268,11 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel7.setText(":");
 
-        lbl_showStudentID.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        lbl_showStudentID.setText("Sample Data");
-
         jLabel9.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel9.setText("Full Name");
 
         jLabel10.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel10.setText(":");
-
-        jLabel11.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        jLabel11.setText("Sample Data");
 
         jLabel12.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel12.setText("NIC");
@@ -284,17 +280,11 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel13.setText(":");
 
-        jLabel14.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        jLabel14.setText("Sample Data");
-
         jLabel15.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel15.setText("Contact No");
 
         jLabel16.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel16.setText(":");
-
-        jLabel17.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        jLabel17.setText("Sample Data");
 
         jLabel18.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel18.setText("Email");
@@ -302,8 +292,49 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel19.setText(":");
 
-        jLabel20.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        jLabel20.setText("Sample Data");
+        lbl_lecturerEmail.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        lbl_lecturerEmail.setText("Sample Data");
+
+        lbl_lecturerID.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        lbl_lecturerID.setText("Sample Data");
+
+        lbl_lecturerName.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        lbl_lecturerName.setText("Sample Data");
+
+        lbl_lecturerNIC.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        lbl_lecturerNIC.setText("Sample Data");
+
+        lbl_lecturerContact.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
+        lbl_lecturerContact.setText("Sample Data");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_lecturerName)
+                    .addComponent(lbl_lecturerNIC)
+                    .addComponent(lbl_lecturerEmail)
+                    .addComponent(lbl_lecturerContact)
+                    .addComponent(lbl_lecturerID))
+                .addGap(0, 68, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_lecturerID, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(lbl_lecturerName, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_lecturerNIC, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_lecturerContact, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_lecturerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -311,80 +342,68 @@ public class AdminViewLecturer extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel7)
-                        .addGap(28, 28, 28)
-                        .addComponent(lbl_showStudentID))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel14))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel11))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
                             .addComponent(jLabel15)
                             .addComponent(jLabel18))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel20))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel17)))))
-                .addContainerGap(271, Short.MAX_VALUE))
+                        .addGap(0, 34, Short.MAX_VALUE)))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel10))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel16))))
+                .addGap(35, 35, 35)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_showStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         jLabel6.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel6.setText("Search :");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_lecturerID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txt_lecturerIDActionPerformed(evt);
             }
         });
 
@@ -395,6 +414,11 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         btn_Verify.setAlignmentY(0.0F);
         btn_Verify.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_Verify.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Verify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_VerifyActionPerformed(evt);
+            }
+        });
 
         btn_Add.setIcon(new javax.swing.ImageIcon("C:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\AdminActivities\\Icons\\Add.png")); // NOI18N
         btn_Add.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -445,7 +469,7 @@ public class AdminViewLecturer extends javax.swing.JFrame {
                 .addGap(229, 229, 229)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_lecturerID, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_Verify, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -483,7 +507,7 @@ public class AdminViewLecturer extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
+                            .addComponent(txt_lecturerID)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -517,9 +541,9 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_MenuMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txt_lecturerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lecturerIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txt_lecturerIDActionPerformed
 
     private void btn_AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AddMouseClicked
         // TODO add your handling code here:
@@ -534,6 +558,23 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         adminViewLecturerEdit.setVisible(true);
         this.hide();
     }//GEN-LAST:event_btn_EditMouseClicked
+
+    private void btn_VerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerifyActionPerformed
+        // TODO add your handling code here:
+        // In your form code
+        String lecturerID = txt_lecturerID.getText().trim();
+        String[] lecturerDetails = LecturerDetailsLoader.getLecturerDetails(lecturerID);
+
+        if (lecturerDetails[0] != null) {
+            lbl_lecturerID.setText(lecturerDetails[0]);
+            lbl_lecturerName.setText(lecturerDetails[1]);
+            lbl_lecturerNIC.setText(lecturerDetails[2]);
+            lbl_lecturerContact.setText(lecturerDetails[3]);
+            lbl_lecturerEmail.setText(lecturerDetails[4]);
+        } else {
+            JOptionPane.showMessageDialog(this, "Lecturer not found!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_VerifyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -578,17 +619,13 @@ public class AdminViewLecturer extends javax.swing.JFrame {
     private javax.swing.JButton btn_Verify;
     private javax.swing.JButton btn_Verify1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -596,8 +633,13 @@ public class AdminViewLecturer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_adminUsername;
-    private javax.swing.JLabel lbl_showStudentID;
+    private javax.swing.JLabel lbl_lecturerContact;
+    private javax.swing.JLabel lbl_lecturerEmail;
+    private javax.swing.JLabel lbl_lecturerID;
+    private javax.swing.JLabel lbl_lecturerNIC;
+    private javax.swing.JLabel lbl_lecturerName;
+    private javax.swing.JTextField txt_lecturerID;
     // End of variables declaration//GEN-END:variables
 }
