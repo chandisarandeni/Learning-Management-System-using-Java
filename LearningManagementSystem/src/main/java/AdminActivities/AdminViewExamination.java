@@ -4,6 +4,7 @@
  */
 package AdminActivities;
 
+import AdminActivities.CommonClasses.StudentResultsRetriever;
 import CommonClasses.ImageResizer;
 import LoginFrames.Home;
 import StudentActivities.StudentDashboard;
@@ -209,15 +210,15 @@ public class AdminViewExamination extends javax.swing.JFrame {
         btn_Verify = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lbl_showStudentID = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lbl_showStudentName = new javax.swing.JLabel();
+        txt_studentID = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_Results = new javax.swing.JTable();
         btn_Menu = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -246,18 +247,23 @@ public class AdminViewExamination extends javax.swing.JFrame {
         btn_Verify.setAlignmentY(0.0F);
         btn_Verify.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_Verify.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Verify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_VerifyActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
-        jLabel8.setText("Student Name :");
+        jLabel8.setText("Student ID :");
 
-        jLabel9.setFont(new java.awt.Font("Calisto MT", 0, 14)); // NOI18N
-        jLabel9.setText("Sample Data");
+        lbl_showStudentID.setFont(new java.awt.Font("Calisto MT", 0, 14)); // NOI18N
+        lbl_showStudentID.setText("Sample Data");
 
         jLabel10.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel10.setText("Student Name :");
 
-        jLabel11.setFont(new java.awt.Font("Calisto MT", 0, 14)); // NOI18N
-        jLabel11.setText("Sample Data");
+        lbl_showStudentName.setFont(new java.awt.Font("Calisto MT", 0, 14)); // NOI18N
+        lbl_showStudentName.setText("Sample Data");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -270,14 +276,14 @@ public class AdminViewExamination extends javax.swing.JFrame {
                         .addComponent(jLabel8))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel9))
+                        .addComponent(lbl_showStudentID))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
-                                .addComponent(jLabel11)))))
+                                .addComponent(lbl_showStudentName)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -286,17 +292,17 @@ public class AdminViewExamination extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_showStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_showStudentName, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(136, Short.MAX_VALUE))
         );
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_studentID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txt_studentIDActionPerformed(evt);
             }
         });
 
@@ -315,7 +321,7 @@ public class AdminViewExamination extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField1)
+                            .addComponent(txt_studentID)
                             .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
@@ -331,7 +337,7 @@ public class AdminViewExamination extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_studentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(btn_Verify, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -347,7 +353,7 @@ public class AdminViewExamination extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Calisto MT", 1, 12)); // NOI18N
         jLabel6.setText("___________________________________________________________________");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_Results.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -373,14 +379,14 @@ public class AdminViewExamination extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(40);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(40);
+        jScrollPane1.setViewportView(tbl_Results);
+        if (tbl_Results.getColumnModel().getColumnCount() > 0) {
+            tbl_Results.getColumnModel().getColumn(0).setResizable(false);
+            tbl_Results.getColumnModel().getColumn(0).setPreferredWidth(200);
+            tbl_Results.getColumnModel().getColumn(1).setResizable(false);
+            tbl_Results.getColumnModel().getColumn(1).setPreferredWidth(40);
+            tbl_Results.getColumnModel().getColumn(2).setResizable(false);
+            tbl_Results.getColumnModel().getColumn(2).setPreferredWidth(40);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -480,9 +486,15 @@ public class AdminViewExamination extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_MenuMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txt_studentIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_studentIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txt_studentIDActionPerformed
+
+    private void btn_VerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerifyActionPerformed
+        // TODO add your handling code here:
+        // Call this method when a button is clicked or form is loaded
+        StudentResultsRetriever.retrieveResults(txt_studentID, lbl_showStudentID, lbl_showStudentName, tbl_Results);
+    }//GEN-LAST:event_btn_VerifyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -523,7 +535,6 @@ public class AdminViewExamination extends javax.swing.JFrame {
     private javax.swing.JLabel btn_Menu;
     private javax.swing.JButton btn_Verify;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -532,13 +543,14 @@ public class AdminViewExamination extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_adminUsername;
+    private javax.swing.JLabel lbl_showStudentID;
+    private javax.swing.JLabel lbl_showStudentName;
+    private javax.swing.JTable tbl_Results;
+    private javax.swing.JTextField txt_studentID;
     // End of variables declaration//GEN-END:variables
 }
