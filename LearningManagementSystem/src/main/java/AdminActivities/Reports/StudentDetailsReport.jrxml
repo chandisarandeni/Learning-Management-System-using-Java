@@ -1,0 +1,131 @@
+<jasperReport name="Blank_A4_5" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySQL"/>
+	<query language="SQL"><![CDATA[SELECT * FROM Student]]></query>
+	<field name="studentID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="studentID"/>
+		<property name="com.jaspersoft.studio.field.label" value="studentID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="studentName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="studentName"/>
+		<property name="com.jaspersoft.studio.field.label" value="studentName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="studentNIC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="studentNIC"/>
+		<property name="com.jaspersoft.studio.field.label" value="studentNIC"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="studentEmail" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="studentEmail"/>
+		<property name="com.jaspersoft.studio.field.label" value="studentEmail"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="studentPassword" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="studentPassword"/>
+		<property name="com.jaspersoft.studio.field.label" value="studentPassword"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="studentDateOfBirth" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="studentDateOfBirth"/>
+		<property name="com.jaspersoft.studio.field.label" value="studentDateOfBirth"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="studentAddress" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="studentAddress"/>
+		<property name="com.jaspersoft.studio.field.label" value="studentAddress"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="studentContact" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="studentContact"/>
+		<property name="com.jaspersoft.studio.field.label" value="studentContact"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="studentGender" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="studentGender"/>
+		<property name="com.jaspersoft.studio.field.label" value="studentGender"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="80" splitType="Stretch">
+		<element kind="staticText"  x="180" y="0" width="209" height="30" fontName="Calisto MT" fontSize="22.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Reverston University]]></text>
+		</element>
+		<element kind="staticText"  x="180" y="25" width="209" height="30" fontName="Calisto MT" fontSize="16.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Student Details Report]]></text>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="65" splitType="Stretch"/>
+	<detail>
+		<band height="164" splitType="Stretch">
+			<element kind="staticText"  x="160" y="0" width="80" height="14">
+				<text><![CDATA[Student ID ]]></text>
+			</element>
+			<element kind="staticText"  x="250" y="0" width="10" height="14" hTextAlign="Center">
+				<text><![CDATA[:]]></text>
+			</element>
+			<element kind="textField"  x="290" y="0" width="100" height="14">
+				<expression><![CDATA[$F{studentID}]]></expression>
+			</element>
+			<element kind="textField"  x="290" y="25" width="100" height="14">
+				<expression><![CDATA[$F{studentName}]]></expression>
+			</element>
+			<element kind="staticText"  x="160" y="25" width="80" height="14">
+				<text><![CDATA[Name]]></text>
+			</element>
+			<element kind="staticText"  x="250" y="25" width="10" height="14" hTextAlign="Center">
+				<text><![CDATA[:]]></text>
+			</element>
+			<element kind="textField"  x="290" y="50" width="100" height="14">
+				<expression><![CDATA[$F{studentNIC}]]></expression>
+			</element>
+			<element kind="staticText"  x="160" y="50" width="80" height="14">
+				<text><![CDATA[NIC]]></text>
+			</element>
+			<element kind="staticText"  x="250" y="50" width="10" height="14" hTextAlign="Center">
+				<text><![CDATA[:]]></text>
+			</element>
+			<element kind="textField"  x="290" y="75" width="120" height="14">
+				<expression><![CDATA[$F{studentDateOfBirth}]]></expression>
+			</element>
+			<element kind="staticText"  x="160" y="75" width="80" height="14">
+				<text><![CDATA[Birthday]]></text>
+			</element>
+			<element kind="staticText"  x="250" y="75" width="10" height="14" hTextAlign="Center">
+				<text><![CDATA[:]]></text>
+			</element>
+			<element kind="textField"  x="290" y="101" width="100" height="14">
+				<expression><![CDATA[$F{studentContact}]]></expression>
+			</element>
+			<element kind="staticText"  x="160" y="101" width="80" height="14">
+				<text><![CDATA[Contact]]></text>
+			</element>
+			<element kind="staticText"  x="250" y="101" width="10" height="14" hTextAlign="Center">
+				<text><![CDATA[:]]></text>
+			</element>
+			<element kind="textField"  x="290" y="126" width="100" height="14">
+				<expression><![CDATA[$F{studentEmail}]]></expression>
+			</element>
+			<element kind="staticText"  x="160" y="126" width="80" height="14">
+				<text><![CDATA[Email]]></text>
+			</element>
+			<element kind="staticText"  x="250" y="126" width="10" height="14" hTextAlign="Center">
+				<text><![CDATA[:]]></text>
+			</element>
+			<element kind="textField"  x="290" y="150" width="100" height="14">
+				<expression><![CDATA[$F{studentAddress}]]></expression>
+			</element>
+			<element kind="staticText"  x="160" y="150" width="80" height="14">
+				<text><![CDATA[Address]]></text>
+			</element>
+			<element kind="staticText"  x="250" y="150" width="10" height="14" hTextAlign="Center">
+				<text><![CDATA[:]]></text>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

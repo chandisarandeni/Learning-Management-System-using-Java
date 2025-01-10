@@ -8,11 +8,20 @@ import AdminActivities.CommonClasses.StudentDataLoader;
 import CommonClasses.ImageResizer;
 import LoginFrames.Home;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.HashMap;
+import java.util.Map;
 import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -468,6 +477,11 @@ public class AdminViewStudent extends javax.swing.JFrame {
         btn_Verify1.setAlignmentY(0.0F);
         btn_Verify1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_Verify1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Verify1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Verify1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -588,6 +602,31 @@ public class AdminViewStudent extends javax.swing.JFrame {
                 lbl_studentNIC, lbl_studentDoB, lbl_studentContact,
                 lbl_studentEmail, lbl_studentAddress);
     }//GEN-LAST:event_btn_SearchActionPerformed
+
+    private void btn_Verify1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Verify1ActionPerformed
+        // TODO add your handling code here:
+        
+        String studentID = "S-002";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/LMS?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "")) {
+                String reportPath = "CC:\\Users\\chand\\OneDrive\\Desktop\\GitHub Clones\\Learning-Management-System-using-Java\\LearningManagementSystem\\src\\main\\java\\AdminActivities\\Reports\\StudentDetailsReport.jrxml";
+                JasperReport jr = JasperCompileManager.compileReport(reportPath);
+
+                // Create a parameter map
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("studentID", studentID);
+
+                // Pass parameters to the report
+                JasperPrint jp = JasperFillManager.fillReport(jr, parameters, conn);
+                JasperViewer.viewReport(jp);
+            }
+        } catch (Exception Ex) {
+            JOptionPane.showMessageDialog(null, Ex);
+            System.out.println(Ex);
+        }
+        
+    }//GEN-LAST:event_btn_Verify1ActionPerformed
 
     /**
      * @param args the command line arguments

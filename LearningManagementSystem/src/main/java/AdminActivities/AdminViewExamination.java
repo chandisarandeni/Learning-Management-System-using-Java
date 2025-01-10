@@ -213,6 +213,7 @@ public class AdminViewExamination extends javax.swing.JFrame {
         lbl_showStudentID = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         lbl_showStudentName = new javax.swing.JLabel();
+        btn_Verify1 = new javax.swing.JButton();
         txt_studentID = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -265,6 +266,19 @@ public class AdminViewExamination extends javax.swing.JFrame {
         lbl_showStudentName.setFont(new java.awt.Font("Calisto MT", 0, 14)); // NOI18N
         lbl_showStudentName.setText("Sample Data");
 
+        btn_Verify1.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Verify1.setFont(new java.awt.Font("Calisto MT", 1, 15)); // NOI18N
+        btn_Verify1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Verify1.setText("Print");
+        btn_Verify1.setAlignmentY(0.0F);
+        btn_Verify1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Verify1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Verify1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Verify1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -272,19 +286,25 @@ public class AdminViewExamination extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(lbl_showStudentID))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(lbl_showStudentName)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap()
+                                .addComponent(jLabel8))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(lbl_showStudentID))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(lbl_showStudentName)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_Verify1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,7 +317,8 @@ public class AdminViewExamination extends javax.swing.JFrame {
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_showStudentName, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(btn_Verify1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         txt_studentID.addActionListener(new java.awt.event.ActionListener() {
@@ -496,6 +517,10 @@ public class AdminViewExamination extends javax.swing.JFrame {
         StudentResultsRetriever.retrieveResults(txt_studentID, lbl_showStudentID, lbl_showStudentName, tbl_Results);
     }//GEN-LAST:event_btn_VerifyActionPerformed
 
+    private void btn_Verify1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Verify1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Verify1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -534,6 +559,7 @@ public class AdminViewExamination extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_Menu;
     private javax.swing.JButton btn_Verify;
+    private javax.swing.JButton btn_Verify1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
